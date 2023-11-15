@@ -1,4 +1,3 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
@@ -10,13 +9,13 @@ export default {
         './resources/js/**/*.vue',
     ],
 
-    theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
-        },
-    },
+    // theme: {
+    //     extend: {
+    //         fontFamily: {
+    //             sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+    //         },
+    //     },
+    // },
 
     plugins: [forms],
 };
