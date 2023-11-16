@@ -1,22 +1,30 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import { Head } from "@inertiajs/vue3";
 </script>
 
 <template>
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dashboard</h2>
-        </template>
+        <section
+            class="flex flex-col gap-3"
+        >
+            <h3
+                class="text-gray-900 dark:text-gray-300 text-xl md:text-5xl text-center leading-8 md:leading-[4rem]"
+            >
+                Bienvenidos al Sistema para la gestión administrativa y
+                académica de los proyectos socio-productivos de la UNERG.
+            </h3>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">You're logged in!</div>
-                </div>
+            <div class="relative">
+                <div class="absolute inset-0 bg-gray-900/50"></div>
+                <img
+                    src="./../../images/dashboard/project-home.webp"
+                    alt="project-home"
+                    class="object-cover object-center w-full rounded-md"
+                />
             </div>
-        </div>
+        </section>
     </AuthenticatedLayout>
 </template>

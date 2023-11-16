@@ -6,7 +6,7 @@ import LogoUnerg from "./LogoUnerg.vue";
 
 <template>
     <header
-        class="text-gray-600 dark:text-gray-300 dark:bg-gray-800 bg-gray-300"
+        class="text-gray-600 dark:text-gray-300 dark:bg-sky-800 bg-gray-300"
     >
         <section
             class="flex flex-wrap p-5 flex-col md:flex-row items-center max-w-7xl mx-auto"

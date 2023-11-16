@@ -20,3 +20,11 @@ export const userId = computed(() => {
     const { props } = usePage();
     return props.auth?.user?.id ?? null;
 });
+
+/**
+ * Devuelve el usuario autenticado
+ */
+export const user = computed(() => {
+    const { props } = usePage();
+    return props.auth?.user ?? {};
+});

@@ -20,6 +20,7 @@
     },
     "dependencies": {
         "primevue": "3.40.1",
-        "sweetalert2": "11.9.0"
+        "sweetalert2": "11.9.0",
+        "primeicons": "6.0.0"
     }
 }

@@ -1,33 +1,23 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return Inertia::render('Home', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('home');
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/profile.php';
+
+
+// grupo de rutas para works
+Route::group(['prefix' => 'investigation-works', 'as' => 'investigation-works.'], function () {
+    Route::get('/', [App\Http\Controllers\InvestigationWorkController::class, 'index'])->name('index');
+    Route::get('/create', [App\Http\Controllers\InvestigationWorkController::class, 'create'])->name('create');
+    Route::post('/', [App\Http\Controllers\InvestigationWorkController::class, 'store'])->name('store');
+    Route::get('/{work}/edit', [App\Http\Controllers\InvestigationWorkController::class, 'edit'])->name('edit');
+    Route::put('/{work}', [App\Http\Controllers\InvestigationWorkController::class, 'update'])->name('update');
+    Route::delete('/{work}', [App\Http\Controllers\InvestigationWorkController::class, 'destroy'])->name('destroy');
+})->middleware(['auth']);

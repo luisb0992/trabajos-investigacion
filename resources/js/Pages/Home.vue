@@ -9,7 +9,7 @@ import Body from "@/Components/Home/Body.vue";
     <Head title="Inicio" />
 
     <main
-        class="bg-center bg-gray-100 dark:bg-gradient-to-t dark:from-gray-800 dark:to-sky-900 selection:bg-blue-400 selection:text-white min-h-screen"
+        class="bg-center bg-gray-100 dark:bg-gradient-to-t dark:from-sky-800 dark:to-sky-900 selection:bg-blue-400 selection:text-white min-h-screen"
     >
         <HeaderHome />
 
