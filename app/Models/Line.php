@@ -2,10 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Services\LineTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Line extends Model
 {
-    use HasFactory;
+    use LineTrait;
+
+    protected $table = 'lines';
+
+    protected $fillable = [
+        'name',
+        'active',
+    ];
 }

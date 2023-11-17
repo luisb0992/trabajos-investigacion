@@ -27,3 +27,17 @@ export const alertWarning = (title, text) => {
 export const alertInfo = (title, text) => {
     baseAlert("info", title, text);
 };
+
+/**
+ * Validar errores de request laravel
+ */
+export const validateRequest = (error) => {
+    if (error.response.status === 422) {
+        const errors = error.response.data.errors;
+        let message = "";
+        for (const key in errors) {
+            message += `${errors[key]} \n`;
+        }
+        alertError("Error", message);
+    }
+};

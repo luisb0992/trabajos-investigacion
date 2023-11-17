@@ -16,27 +16,14 @@ const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
 });
 
-const items = ref([
-    {
-        title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        authors: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        area: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        line: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        file: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+const props = defineProps({
+    items: {
+        type: Array,
+        required: true,
     },
-    {
-        title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        authors: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        area: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        line: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        file: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    },
-]);
+});
 
-const goToCreateInvestigationWork = () => {
-    const url = route("investigation-works.create");
-    return window.location.replace(url);
-};
+console.log(props.items);
 </script>
 
 <template>
@@ -47,18 +34,11 @@ const goToCreateInvestigationWork = () => {
             <div>
                 <Toolbar class="mb-4 bg-gray-600">
                     <template #start>
-                        <!-- <Button
-                            label="Nuevo trabajo"
-                            icon="pi pi-plus"
-                            severity="success"
-                            class="mr-2"
-                            @click="goToCreateInvestigationWork"
-                        /> -->
                         <LinkDefault
                             :href="route('investigation-works.create')"
                         >
                             <span class="pi pi-plus"></span>
-                            Trabajos
+                            Nuevo Trabajo
                         </LinkDefault>
                     </template>
 
@@ -110,15 +90,26 @@ const goToCreateInvestigationWork = () => {
                         header="Autores"
                         sortable
                         style="min-width: 16rem"
-                    ></Column>
+                    >
+                        <template #body="slotProps">
+                            <ul class="list-disc list-inside">
+                                <li
+                                    v-for="author in slotProps.data.authors"
+                                    :key="author.id"
+                                >
+                                    {{ author.firstname }} {{ author.lastname }}
+                                </li>
+                            </ul>
+                        </template>
+                    </Column>
                     <Column
-                        field="area"
+                        field="area.name"
                         header="Area o Centro"
                         sortable
                         style="min-width: 10rem"
                     ></Column>
                     <Column
-                        field="line"
+                        field="line.name"
                         header="Linea de investigación"
                         sortable
                         style="min-width: 10rem"
