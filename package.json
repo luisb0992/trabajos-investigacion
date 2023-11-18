@@ -19,8 +19,8 @@
         "vue": "3.2.41"
     },
     "dependencies": {
+        "primeicons": "6.0.0",
         "primevue": "3.40.1",
-        "sweetalert2": "11.9.0",
-        "primeicons": "6.0.0"
+        "sweetalert2": "11.9.0"
     }
 }

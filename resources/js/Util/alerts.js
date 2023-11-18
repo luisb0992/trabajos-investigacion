@@ -4,11 +4,12 @@
 
 import Swal from "sweetalert2";
 
-const baseAlert = (icon, title, text) => {
-    Swal.fire({
+const baseAlert = (icon, title, text, options = null) => {
+    return Swal.fire({
         icon: icon,
         title: title,
         text: text,
+        ...options,
     });
 };
 
@@ -40,4 +41,42 @@ export const validateRequest = (error) => {
         }
         alertError("Error", message);
     }
+
+    if (error.response.status === 500) {
+        alertError("Error", "Error interno del servidor");
+    }
+
+    if (error.response.status === 404) {
+        alertError("Error", "Recurso no encontrado");
+    }
+
+    if (error.response.status === 401) {
+        alertError("Error", "No esta autorizado para realizar esta acción");
+    }
+
+    if (error.response.status === 403) {
+        alertError("Error", "Acceso denegado");
+    }
+
+    console.log(error);
+};
+
+/**
+ * confirmar una alerta
+ */
+export const alertConfirm = ({
+    icon = "warning",
+    title = "¿seguro desea ejecutar esta acción?",
+    text = "",
+    options = {
+        showCancelButton: true,
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Si, continuar",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        // showDenyButton: true,
+        // denyButtonText: `No eliminar`,
+    },
+}) => {
+    return baseAlert(icon, title, text, options);
 };

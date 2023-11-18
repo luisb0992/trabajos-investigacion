@@ -1,9 +1,8 @@
 <script setup>
+import { Head } from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import InputText from "primevue/inputtext";
-import { Head } from "@inertiajs/vue3";
 import AutoComplete from "primevue/autocomplete";
-
 import useCreateInvestigationWork from "@/Pages/InvestigationWorks/composables/useCreateInvestigationWork.js";
 import Button from "primevue/button";
 

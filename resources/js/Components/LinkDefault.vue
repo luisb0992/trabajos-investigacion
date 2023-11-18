@@ -11,7 +11,7 @@ const props = defineProps({
 
 const classes = computed(
     () =>
-        "inline-flex gap-1 items-center p-4 bg-sky-800 hover:bg-sky-700 border-sky-800 dark:border-sky-900 text-sm font-medium leading-5 text-gray-900 dark:text-gray-100 focus:outline-none focus:border-sky-900 transition duration-150 ease-in-out rounded-md"
+        "inline-flex gap-1 items-center p-4 bg-sky-800 hover:bg-sky-700 border-sky-800 dark:border-sky-900 text-sm font-medium leading-5 text-gray-100 focus:outline-none focus:border-sky-900 transition duration-150 ease-in-out rounded-md"
 );
 </script>
 

@@ -3,8 +3,8 @@
 namespace App\Http\Services\InvestigationWork;
 
 use App\Models\InvestigationWork;
-use Exception;
 use Illuminate\Http\UploadedFile;
+use Exception;
 
 class Factory
 {
@@ -24,11 +24,11 @@ class Factory
     return $investigationWork;
   }
 
-
   public function saveFile(UploadedFile $file): string
   {
     $fullname = 'Archivo' . '_' . date('YmdHis') . '.' . $file->getClientOriginalExtension();
-    $saved = $file->storeAs('investigation_works', $fullname);
+    $path = config('filesystems.paths.inv_work');
+    $saved = $file->storeAs($path, $fullname);
 
     if (!$saved) {
       throw new Exception('No se pudo guardar el archivo');
@@ -45,5 +45,16 @@ class Factory
         'lastname' => $author['lastname'],
       ]);
     }
+  }
+
+  public function destroy(InvestigationWork $work): bool
+  {
+    return $work->delete();
+  }
+
+  public function deleteFile(InvestigationWork $work): bool
+  {
+    $path = config('filesystems.paths.inv_work') . '/' . $work->file;
+    return unlink(storage_path('app/' . $path));
   }
 }

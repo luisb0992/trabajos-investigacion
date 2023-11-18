@@ -7,6 +7,7 @@ use App\Http\Services\InvestigationWork\Factory;
 use App\Models\Area;
 use App\Models\InvestigationWork;
 use App\Models\Line;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 
 class InvestigationWorkController extends Controller
@@ -39,5 +40,22 @@ class InvestigationWorkController extends Controller
         $this->factory->save($request->validated());
 
         return inertia('InvestigationWorks/Create');
+    }
+
+    public function edit(InvestigationWork $work): Response
+    {
+        return inertia('InvestigationWorks/Edit', [
+            'work' => $work->load('authors'),
+            'lines' => $this->line->getActiveLines(),
+            'areas' => $this->area->getActiveAreas(),
+        ]);
+    }
+
+    public function destroy(InvestigationWork $work): RedirectResponse
+    {
+        $this->factory->destroy($work);
+        $this->factory->deleteFile($work);
+
+        return to_route('investigation-works.index');
     }
 }
