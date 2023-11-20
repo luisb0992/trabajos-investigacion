@@ -45,9 +45,18 @@ class InvestigationWorkController extends Controller
     public function edit(InvestigationWork $work): Response
     {
         return inertia('InvestigationWorks/Edit', [
-            'work' => $work->load('authors'),
+            'item' => $work->getInvestigationWork(),
             'lines' => $this->line->getActiveLines(),
             'areas' => $this->area->getActiveAreas(),
+        ]);
+    }
+
+    public function update(CreateInvestigationWorkRequest $request, InvestigationWork $work): Response
+    {
+        $this->factory->update($request->validated(), $work);
+
+        return inertia('InvestigationWorks/Index', [
+            'items' => $this->model->getInvestigationWorks(),
         ]);
     }
 

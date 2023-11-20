@@ -39,6 +39,8 @@ export const add = "Agregar";
 
 export const update = "Actualizar";
 
+export const validateFields = "Por favor, Verifique los siguientes campos";
+
 /**
  * ------------------------------
  * TRABAJOS DE INVESTIGACIÓN
@@ -51,5 +53,29 @@ export const workDeleted = "Trabajo de investigación eliminado con éxito";
 // trabajo de investigación creado
 export const workCreated = "Trabajo de investigación creado con éxito";
 
+// actualizado
+export const workUpdated = "Trabajo de investigación actualizado con éxito";
+
 // confirmación de eliminación de trabajo de investigación
 export const workConfirmDelete = "¿Esta seguro que desea eliminar?";
+
+/**
+ * ------------------------------
+ * Validaciones
+ * ------------------------------
+ */
+
+// titulo
+export const titleRequired = "El título es requerido";
+
+// area
+export const areaRequired = "El área de investigación es requerida";
+
+// linea
+export const lineRequired = "La línea de investigación es requerida";
+
+// autores
+export const authorsRequired = "Debe agregar al menos un autor";
+
+// archivo
+export const fileRequired = "Debe seleccionar al menos un archivo";

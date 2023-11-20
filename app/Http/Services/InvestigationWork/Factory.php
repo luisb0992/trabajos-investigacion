@@ -12,6 +12,7 @@ class Factory
   {
   }
 
+  // guardar un nuevo trabajo de investigación
   public function save(array $data): InvestigationWork
   {
     $authors = $data['authors'];
@@ -24,6 +25,7 @@ class Factory
     return $investigationWork;
   }
 
+  // guardar el archivo en el disco
   public function saveFile(UploadedFile $file): string
   {
     $fullname = 'Archivo' . '_' . date('YmdHis') . '.' . $file->getClientOriginalExtension();
@@ -37,8 +39,10 @@ class Factory
     return $fullname;
   }
 
+  // guardar los autores del trabajo de investigación
   public function saveAuthors(array $authors, InvestigationWork $investigationWork): void
   {
+    $investigationWork->authors()->delete();
     foreach ($authors as $author) {
       $investigationWork->authors()->create([
         'firstname' => $author['name'],
@@ -47,14 +51,33 @@ class Factory
     }
   }
 
+  // eliminar un trabajo de investigación
   public function destroy(InvestigationWork $work): bool
   {
     return $work->delete();
   }
 
+  // eliminar el archivo del disco
   public function deleteFile(InvestigationWork $work): bool
   {
     $path = config('filesystems.paths.inv_work') . '/' . $work->file;
     return unlink(storage_path('app/' . $path));
+  }
+
+  // actualizar un trabajo de investigación
+  public function update(array $data, InvestigationWork $work): InvestigationWork
+  {
+    $authors = $data['authors'];
+    $file = $data['file'];
+
+    if ($file instanceof UploadedFile) {
+      $data['file'] = $this->saveFile($file);
+      $this->deleteFile($work);
+    }
+
+    $work->update($data);
+    $this->saveAuthors($authors, $work);
+
+    return $work;
   }
 }

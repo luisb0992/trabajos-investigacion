@@ -6,59 +6,60 @@ import Swal from "sweetalert2";
 
 const baseAlert = (icon, title, text, options = null) => {
     return Swal.fire({
-        icon: icon,
-        title: title,
-        text: text,
+        icon,
+        title,
+        text,
+        html: "<span style='color: #000'>" + text + "</span>",
         ...options,
     });
 };
 
-export const alertError = (title, text) => {
-    baseAlert("error", title, text);
+export const alertError = (title, text, options = null) => {
+    baseAlert("error", title, text, options);
 };
 
-export const alertSuccess = (title, text) => {
-    baseAlert("success", title, text);
+export const alertSuccess = (title, text, options = null) => {
+    baseAlert("success", title, text, options);
 };
 
-export const alertWarning = (title, text) => {
-    baseAlert("warning", title, text);
+export const alertWarning = (title, text, options = null) => {
+    baseAlert("warning", title, text, options);
 };
 
-export const alertInfo = (title, text) => {
-    baseAlert("info", title, text);
+export const alertInfo = (title, text, options = null) => {
+    baseAlert("info", title, text, options);
 };
 
 /**
  * Validar errores de request laravel
  */
-export const validateRequest = (error) => {
-    if (error.response.status === 422) {
-        const errors = error.response.data.errors;
+export const validateRequest = (errors) => {
+    console.log(errors);
+    if (errors) {
         let message = "";
         for (const key in errors) {
-            message += `${errors[key]} \n`;
+            message += `${errors[key]} <br>`;
         }
+
         alertError("Error", message);
+        return;
     }
 
-    if (error.response.status === 500) {
+    if (errors?.response?.status === 500) {
         alertError("Error", "Error interno del servidor");
     }
 
-    if (error.response.status === 404) {
+    if (errors?.response?.status === 404) {
         alertError("Error", "Recurso no encontrado");
     }
 
-    if (error.response.status === 401) {
+    if (errors?.response?.status === 401) {
         alertError("Error", "No esta autorizado para realizar esta acción");
     }
 
-    if (error.response.status === 403) {
+    if (errors?.response?.status === 403) {
         alertError("Error", "Acceso denegado");
     }
-
-    console.log(error);
 };
 
 /**

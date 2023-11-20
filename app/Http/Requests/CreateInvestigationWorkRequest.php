@@ -21,13 +21,28 @@ class CreateInvestigationWorkRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'title' => 'required|string',
-            'file' => 'required|file',
-            'line_id' => 'required|exists:lines,id',
-            'area_id' => 'required|exists:areas,id',
-            'authors' => 'required|array',
-        ];
+        // si es un update
+        // dd($this->all());
+        if ($this->method() === 'PUT') {
+            return [
+                'title' => 'required|string',
+                'file' => 'nullable',
+                'line_id' => 'required|exists:lines,id',
+                'area_id' => 'required|exists:areas,id',
+                'authors' => 'required|array',
+            ];
+        }
+
+        // si es un create
+        if ($this->method() === 'POST') {
+            return [
+                'title' => 'required|string',
+                'file' => 'required|file',
+                'line_id' => 'required|exists:lines,id',
+                'area_id' => 'required|exists:areas,id',
+                'authors' => 'required|array',
+            ];
+        }
     }
 
     /**
@@ -40,6 +55,7 @@ class CreateInvestigationWorkRequest extends FormRequest
         return [
             'title.required' => 'El título es requerido',
             'file.required' => 'El archivo es requerido',
+            'file.file' => 'El archivo debe ser un formato valido (pdf)',
             'line_id.required' => 'La línea es requerida',
             'line_id.exists' => 'La línea no existe',
             'area_id.required' => 'El área es requerida',
