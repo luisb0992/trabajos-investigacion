@@ -61,6 +61,32 @@ export const workConfirmDelete = "¿Esta seguro que desea eliminar?";
 
 /**
  * ------------------------------
+ * USUARIOS
+ * ------------------------------
+ */
+
+// Usuario eliminado
+export const userDeleted = "Usuario eliminado con éxito";
+
+// Usuario creado
+export const userCreated = "Usuario creado con éxito";
+
+// Usuario actualizado
+export const userUpdated = "Usuario actualizado con éxito";
+
+// confirmación de eliminación de usuario
+export const userConfirmDelete =
+    "¿Esta seguro que desea eliminar este usuario?";
+
+// no se puede eliminar el usuario en sesión
+export const userCantDeleteInSesion =
+    "No se puede eliminar el usuario en sesión";
+
+// no se puede eliminar
+export const userCantDelete = "No se puede eliminar";
+
+/**
+ * ------------------------------
  * Validaciones
  * ------------------------------
  */
@@ -79,3 +105,27 @@ export const authorsRequired = "Debe agregar al menos un autor";
 
 // archivo
 export const fileRequired = "Debe seleccionar al menos un archivo";
+
+// nombre requerido
+export const nameRequired = "El nombre es requerido";
+
+// email requerido
+export const emailRequired = "El email es requerido";
+
+// email invalido
+export const emailInvalid = "El email es inválido";
+
+// password requerido
+export const passwordRequired = "La contraseña es requerida";
+
+// password mínimo
+export const passwordMin = "La contraseña debe tener al menos 8 caracteres";
+
+// password confirmación
+export const passwordConfirmation = "Las contraseñas no coinciden";
+
+// rol requerido
+export const rolRequired = "El rol es requerido";
+
+// rol invalido
+export const rolInvalid = "El rol seleccionado es inválido";

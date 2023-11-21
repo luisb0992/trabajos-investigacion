@@ -9,6 +9,7 @@ use App\Models\InvestigationWork;
 use App\Models\Line;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class InvestigationWorkController extends Controller
 {

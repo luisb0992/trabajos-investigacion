@@ -30,6 +30,8 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $inv_work = config('filesystems.paths.inv_work');
+
         return [
             ...parent::share($request),
             'auth' => [
@@ -38,6 +40,9 @@ class HandleInertiaRequests extends Middleware
             'ziggy' => fn () => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
+            ],
+            'paths' => [
+                'inv_work' => env('APP_URL') . 'storage/' . $inv_work,
             ],
         ];
     }

@@ -12,6 +12,18 @@ import { user } from "@/Util/auth";
             >
                 Dashboard
             </ResponsiveNavLink>
+            <ResponsiveNavLink
+                :href="route('users.index')"
+                :active="route().current('users.index')"
+            >
+                Usuarios
+            </ResponsiveNavLink>
+            <ResponsiveNavLink
+                :href="route('investigation-works.index')"
+                :active="route().current('investigation-works.index')"
+            >
+                Trabajos
+            </ResponsiveNavLink>
         </div>
         <!-- /links -->
 

@@ -10,6 +10,12 @@ import NavLink from "@/Components/NavLink.vue";
             Dashboard
         </NavLink>
         <NavLink
+            :href="route('users.index')"
+            :active="route().current('users.index')"
+        >
+            Usuarios
+        </NavLink>
+        <NavLink
             :href="route('investigation-works.index')"
             :active="route().current('investigation-works.index')"
         >
