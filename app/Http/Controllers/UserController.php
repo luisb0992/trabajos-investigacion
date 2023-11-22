@@ -6,7 +6,6 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Services\User\Factory;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Inertia\Response;
 
 class UserController extends Controller
@@ -19,9 +18,7 @@ class UserController extends Controller
 
     public function index(): Response
     {
-        return inertia('Users/Index', [
-            'items' => $this->model->getAllUsers(),
-        ]);
+        return $this->renderIndex();
     }
 
     public function create(): Response
@@ -33,9 +30,21 @@ class UserController extends Controller
     {
         $this->factory->save($request->validated());
 
-        return inertia('Users/Index', [
-            'items' => $this->model->getAllUsers(),
+        return $this->renderIndex();
+    }
+
+    public function edit(User $user): Response
+    {
+        return inertia('Users/Edit', [
+            'item' => $user,
         ]);
+    }
+
+    public function update(CreateUserRequest $request, User $user): Response
+    {
+        $this->factory->update($request->validated(), $user);
+
+        return $this->renderIndex();
     }
 
     public function destroy(User $user): RedirectResponse
@@ -43,5 +52,12 @@ class UserController extends Controller
         $this->factory->deleteUser($user);
 
         return to_route('users.index');
+    }
+
+    public function renderIndex(): Response
+    {
+        return inertia('Users/Index', [
+            'items' => $this->model->getAllUsers(),
+        ]);
     }
 }

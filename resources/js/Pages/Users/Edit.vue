@@ -1,22 +1,24 @@
 <script setup>
 import { Head } from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import useCreate from "@/Pages/Users/composables/useCreate.js";
+import useUpdate from "@/Pages/Users/composables/useUpdate.js";
 import Form from "@/Pages/Users/partials/Form.vue";
 
-const { form, roles, loading, searchRole, create } = useCreate();
+const { form, roles, loading, searchRole, update } = useUpdate();
 </script>
 
 <template>
-    <Head title="Nuevo Usuario" />
+    <Head title="Actualizar datos de usuario" />
 
     <AuthenticatedLayout>
         <Form
-            @submit.prevent="create"
+            @submit.prevent="update"
             :form="form"
             :roles="roles"
             :loading="loading"
-            button-label="Guardar"
+            :is-update="true"
+            title="Actualizar datos de usuario"
+            button-label="Actualizar"
             :searchRole="searchRole"
         />
     </AuthenticatedLayout>

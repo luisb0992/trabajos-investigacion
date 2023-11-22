@@ -40,4 +40,23 @@ class Factory
       throw new Exception($e->getMessage());
     }
   }
+
+  // actualizar usuario
+  public function update(array $data, User $user): void
+  {
+    try {
+      $user->update([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'rol_id' => $data['rol_id'],
+      ]);
+
+      if ($data['checked']) {
+        $data['password'] = bcrypt($data['password']);
+        $user->update(['password' => $data['password']]);
+      }
+    } catch (Exception $e) {
+      throw new Exception($e->getMessage());
+    }
+  }
 }

@@ -10,7 +10,10 @@ import {
     passwordRequired,
     rolInvalid,
     rolRequired,
+    sameUser,
 } from "@/Util/messages";
+
+import { user } from "@/Util/auth";
 
 export default function useValidations(form) {
     const validate = () => {
@@ -18,6 +21,12 @@ export default function useValidations(form) {
             hasErrors: false,
             msjs: [],
         };
+
+        console.log(form.id, user.value.id);
+        if (form.id === user.value.id) {
+            errors.hasErrors = true;
+            errors.msjs.push(sameUser);
+        }
 
         if (!form.name) {
             errors.hasErrors = true;
@@ -39,7 +48,7 @@ export default function useValidations(form) {
             errors.msjs.push(rolInvalid);
         }
 
-        if (!form.password) {
+        if (!form.password && form.checked) {
             errors.hasErrors = true;
             errors.msjs.push(passwordRequired);
         }

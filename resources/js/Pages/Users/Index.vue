@@ -8,6 +8,7 @@ import Button from "primevue/button";
 import InputText from "primevue/inputtext";
 import LinkDefault from "@/Components/LinkDefault.vue";
 import useIndex from "./composables/useIndex.js";
+import { formatDate } from "@/Util/filters";
 
 const { filters, items, loading, dtusers, confirmDelete, exportCSV } =
     useIndex();
@@ -83,7 +84,18 @@ const { filters, items, loading, dtusers, confirmDelete, exportCSV } =
                         header="Rol"
                         sortable
                         style="min-width: 10rem"
-                    ></Column>
+                    >
+                    </Column>
+                    <Column
+                        field="created_at"
+                        header="Registrado el"
+                        sortable
+                        style="min-width: 10rem"
+                    >
+                        <template #body="p">
+                            {{ formatDate(p.data.created_at) }}
+                        </template>
+                    </Column>
                     <Column :exportable="false" style="min-width: 10rem">
                         <template #body="p">
                             <div class="flex gap-3">

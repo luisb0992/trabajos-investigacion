@@ -85,6 +85,9 @@ export const userCantDeleteInSesion =
 // no se puede eliminar
 export const userCantDelete = "No se puede eliminar";
 
+// mismo usuario
+export const sameUser = "No puede actualizar el usuario en sesión desde aquí";
+
 /**
  * ------------------------------
  * Validaciones

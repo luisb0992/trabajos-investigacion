@@ -21,6 +21,17 @@ class CreateUserRequest extends FormRequest
      */
     public function rules(): array
     {
+        // si es un update
+        if ($this->method() === 'PUT') {
+            return [
+                'name' => ['required', 'string', 'max:255', 'min:3'],
+                'email' => ['required', 'email', 'unique:users,email,' . $this->user->id],
+                'password' => ['nullable', 'string', 'min:8'],
+                'rol_id' => ['required', 'integer'],
+                'checked' => ['required', 'boolean'],
+            ];
+        }
+
         return [
             'name' => ['required', 'string', 'max:255', 'min:3'],
             'email' => ['required', 'email', 'unique:users,email'],
