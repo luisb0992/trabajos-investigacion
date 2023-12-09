@@ -11,7 +11,7 @@ import { Link } from "@inertiajs/vue3";
             class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg"
         >
             <Link href="/" class="flex justify-center">
-                <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
+                <ApplicationLogo class="fill-current text-gray-500 py-5" />
             </Link>
             <slot />
         </div>

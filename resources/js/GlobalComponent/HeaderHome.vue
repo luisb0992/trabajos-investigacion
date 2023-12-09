@@ -12,10 +12,10 @@ import LogoUnerg from "./LogoUnerg.vue";
             class="flex flex-wrap p-5 flex-col md:flex-row items-center max-w-7xl mx-auto"
         >
             <Link
-                class="flex font-medium items-center justify-center text-gray-800 dark:text-gray-300 mb-4 md:mb-0"
+                class="flex font-medium items-center justify-center text-gray-800 dark:text-gray-300 mb-4 md:mb-0 w-40"
                 :href="route('home')"
             >
-                <LogoUnerg />
+                <LogoUnerg/>
                 <span
                     class="ml-3 text-xl dark:hover:text-white transition duration-150 ease-in"
                 >
@@ -41,12 +41,12 @@ import LogoUnerg from "./LogoUnerg.vue";
                         Iniciar sesión
                     </Link>
 
-                    <Link
+                    <!-- <Link
                         :href="route('register')"
                         class="ms-4 font-semibold dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 transition duration-150 ease-in"
                     >
                         Regístrate
-                    </Link>
+                    </Link> -->
                 </template>
             </nav>
         </section>

@@ -60,8 +60,12 @@ class Factory
   // eliminar el archivo del disco
   public function deleteFile(InvestigationWork $work): bool
   {
-    $path = config('filesystems.paths.inv_work') . '/' . $work->file;
-    return unlink(storage_path('app/' . $path));
+    try {
+      $path = config('filesystems.paths.inv_work') . '/' . $work->file;
+      return unlink(storage_path('app/' . $path));
+    } catch (Exception $e) {
+      return false;
+    }
   }
 
   // actualizar un trabajo de investigación

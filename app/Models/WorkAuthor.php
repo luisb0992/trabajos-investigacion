@@ -13,6 +13,11 @@ class WorkAuthor extends Model
         'firstname',
         'lastname',
         'email',
+        'dni',
+        'phone',
+        'level_instruction',
+        'address',
+        'function_project',
         'active',
     ];
 }

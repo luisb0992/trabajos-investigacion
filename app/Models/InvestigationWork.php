@@ -14,9 +14,25 @@ class InvestigationWork extends Model
     protected $table = 'investigation_works';
 
     protected $fillable = [
+        'category_id',
         'line_id',
         'area_id',
         'title',
+        'es_summary',
+        'en_summary',
+        'email',
+        'profile',
+        'orcid_code',
+        'type',
+        'status',
+        'location',
+        'approach',
+        'justification',
+        'background',
+        'general_objective',
+        'specific_objective',
+        'expected_results',
+        'methodology',
         'file',
     ];
 
@@ -34,9 +50,4 @@ class InvestigationWork extends Model
     {
         return $this->hasMany(WorkAuthor::class);
     }
-
-    // public function getFilePathAttribute(): string
-    // {
-    //     return asset('storage/' . $this->file);
-    // }
 }

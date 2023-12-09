@@ -9,7 +9,6 @@ use App\Models\InvestigationWork;
 use App\Models\Line;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class InvestigationWorkController extends Controller
 {
@@ -21,11 +20,16 @@ class InvestigationWorkController extends Controller
     ) {
     }
 
-    public function index(): Response
+    public function returnIndex(): Response
     {
         return inertia('InvestigationWorks/Index', [
             'items' => $this->model->getInvestigationWorks(),
         ]);
+    }
+
+    public function index(): Response
+    {
+        return $this->returnIndex();
     }
 
     public function create(): Response
@@ -56,9 +60,7 @@ class InvestigationWorkController extends Controller
     {
         $this->factory->update($request->validated(), $work);
 
-        return inertia('InvestigationWorks/Index', [
-            'items' => $this->model->getInvestigationWorks(),
-        ]);
+        return $this->returnIndex();
     }
 
     public function destroy(InvestigationWork $work): RedirectResponse

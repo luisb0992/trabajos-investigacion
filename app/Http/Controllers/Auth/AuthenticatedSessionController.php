@@ -34,6 +34,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // si el usuario esta inactivo
+        if (!Auth::user()->active) {
+            Auth::logout();
+            return redirect()->route('login')->with('status', 'Su cuenta se encuentra inactiva, contacte con el administrador');
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
