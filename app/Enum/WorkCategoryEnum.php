@@ -13,29 +13,34 @@ namespace App\Enum;
 
 final class WorkCategoryEnum
 {
-  const WORK = 1;
-  const PROJECT = 2;
-  const PRODUCTIVE_PARTNER = 3;
-  const DEGREE_THESIS = 4;
+  const PROJECT = 1;
+  const DEGREE_WORK = 2;
+  const DOCTORAL_THESIS = 3;
+  const PRODUCTIVE_PARTNER = 4;
   const SCIENTIFIC_ARTICLE = 5;
 
-  // trabajos de grado, tesis y articulo científico
-  // campos:
   // trabajo de grado y tesis: titulo, autor, linea de investigación y resumen.
   // articulo científico: autor, linea de investigación, correo, perfil, código orcid, resumen, adjuntar articulo
   // ambos colocar resumen en ingles y español
 
+  // categorias:
+  // Proyectos
+  // Trabajos de grado
+  // Tesis doctoral
+  // Socio productivo
+  // Artículo científico
+
   public static function getCategory(?int $category): string
   {
     switch ($category) {
-      case self::WORK:
-        return 'Trabajo de grado';
       case self::PROJECT:
-        return 'Proyecto de grado';
+        return 'Proyectos';
+      case self::DEGREE_WORK:
+        return 'Trabajo de grado';
+      case self::DOCTORAL_THESIS:
+        return 'Tesis doctoral';
       case self::PRODUCTIVE_PARTNER:
-        return 'Proyecto Socio productivo';
-      case self::DEGREE_THESIS:
-        return 'Tesis de grado';
+        return 'Socio productivo';
       case self::SCIENTIFIC_ARTICLE:
         return 'Articulo científico';
       default:

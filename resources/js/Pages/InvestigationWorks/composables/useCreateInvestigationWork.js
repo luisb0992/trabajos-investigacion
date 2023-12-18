@@ -3,7 +3,7 @@
  */
 
 import { useForm } from "@inertiajs/vue3";
-import { computed, onMounted, ref, toRefs } from "vue";
+import { onMounted, ref, toRefs } from "vue";
 import { alertError, alertSuccess, validateRequest } from "@/Util/alerts";
 import { success, validateFields, workCreated } from "@/Util/messages";
 import useAuthors from "@/Pages/InvestigationWorks/composables/useAuthors.js";

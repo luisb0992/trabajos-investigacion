@@ -45,7 +45,7 @@ const props = defineProps({
 <template>
     <form class="flex flex-col gap-3 text-gray-800 dark:text-gray-300">
         <h3 class="text-2xl leading-7 text-center md:text-left">
-            Nuevo trabajo de investigación
+            Nuevo Proyecto
         </h3>
         <hr class="border-gray-300" />
         <div class="flex flex-col gap-2">
@@ -56,7 +56,7 @@ const props = defineProps({
                 aria-describedby="title-help"
             />
             <small id="title-help">
-                El título del trabajo de investigación.
+                El título del proyecto.
             </small>
         </div>
         <div class="flex flex-col gap-2">

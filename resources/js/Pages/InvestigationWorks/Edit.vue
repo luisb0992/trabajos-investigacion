@@ -2,7 +2,7 @@
 import { Head } from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import useUpdateInvestigationWork from "./composables/useUpdateInvestigationWork";
-import Form from "./partials/Form.vue";
+import WorkForm from "./partials/WorkForm.vue";
 
 const {
     form,
@@ -19,9 +19,9 @@ const {
 </script>
 
 <template>
-    <Head title="Actualizar Trabajo de investigación" />
+    <Head title="Actualizar Proyecto" />
     <AuthenticatedLayout>
-        <Form
+        <WorkForm
             :areas="areas"
             :lines="lines"
             :authors="authors"

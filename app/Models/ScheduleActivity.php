@@ -2,10 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ScheduleActivity extends Model
 {
-    use HasFactory;
+    protected $table = 'schedule_activities';
+
+    protected $fillable = [
+        'investigation_work_id',
+        'revision',
+        'description',
+        'analysis',
+        'drafting',
+        'conclusions',
+    ];
+
+    public function work()
+    {
+        return $this->belongsTo(InvestigationWork::class);
+    }
 }

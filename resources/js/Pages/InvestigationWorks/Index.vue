@@ -9,6 +9,7 @@ import Button from "primevue/button";
 import InputText from "primevue/inputtext";
 import LinkDefault from "@/Components/LinkDefault.vue";
 import useIndex from "./composables/useIndex";
+import { categories } from "@/Util/const";
 
 const {
     filters,
@@ -112,11 +113,25 @@ const {
                         style="min-width: 10rem"
                     ></Column>
                     <Column
+                        field="category_id"
+                        header="Categoria"
+                        sortable
+                        style="min-width: 10rem"
+                    >
+                        <template #body="p">
+                            {{
+                                categories.find(
+                                    (cat) => cat.id === p.data.category_id
+                                ).name ?? "---"
+                            }}
+                        </template>
+                    </Column>
+                    <!-- <Column
                         field="file"
                         header="Archivo"
                         sortable
                         style="min-width: 10rem"
-                    ></Column>
+                    ></Column> -->
                     <Column :exportable="false" style="min-width: 10rem">
                         <template #body="props">
                             <div class="flex gap-3">
