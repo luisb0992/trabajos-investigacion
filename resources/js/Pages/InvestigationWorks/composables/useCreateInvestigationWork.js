@@ -14,12 +14,26 @@ import useFilters from "./useFilters";
 export default function useCreateInvestigationWork() {
     const loading = ref(false);
     const { authors, addAuthor, removeAuthor } = useAuthors();
-    const { areas, lines, originalAreas, originalLines } = useProps();
-    const { searchArea, searchLine } = useFilters(
+    const {
         areas,
         lines,
+        statuses,
+        types,
         originalAreas,
-        originalLines
+        originalLines,
+        originalTypes,
+        originalStatuses,
+    } = useProps();
+
+    const { searchArea, searchLine, searchStatus, searchType } = useFilters(
+        areas,
+        lines,
+        statuses,
+        types,
+        originalAreas,
+        originalLines,
+        originalStatuses,
+        originalTypes
     );
 
     const form = useForm({
@@ -28,8 +42,23 @@ export default function useCreateInvestigationWork() {
         line: "",
         area_id: "",
         line_id: "",
+        category_id: "",
         file: null,
+        status: { id: "", name: "" },
+        type: { id: "", name: "" },
+        es_summary: "",
+        en_summary: "",
+        approach: "",
+        justification: "",
+        background: "",
+        general_objective: "",
+        specific_objectives: "",
+        expected_results: "",
+        methodology: "",
+        orcid_code: "",
         authors: authors.value,
+        aspects: [],
+        items: [],
     });
 
     onMounted(() => {
@@ -37,6 +66,7 @@ export default function useCreateInvestigationWork() {
     });
 
     const create = () => {
+        console.log(form);
         const { validate } = useValidations(form);
 
         if (validate().hasErrors) {
@@ -62,6 +92,8 @@ export default function useCreateInvestigationWork() {
         ...toRefs({
             areas,
             lines,
+            statuses,
+            types,
             form,
             authors,
             loading,
@@ -70,6 +102,8 @@ export default function useCreateInvestigationWork() {
         searchArea,
         searchLine,
         addAuthor,
+        searchStatus,
+        searchType,
         removeAuthor,
     };
 }

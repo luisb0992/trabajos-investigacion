@@ -20,7 +20,8 @@ final class WorkCategoryEnum
   const SCIENTIFIC_ARTICLE = 5;
 
   // trabajo de grado y tesis: titulo, autor, linea de investigación y resumen.
-  // articulo científico: autor, linea de investigación, correo, perfil, código orcid, resumen, adjuntar articulo
+  // articulo científico: autor, linea de investigación, correo, perfil,
+  // código orcid, resumen, adjuntar articulo
   // ambos colocar resumen en ingles y español
 
   // categorias:

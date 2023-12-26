@@ -68,7 +68,7 @@ const props = defineProps({
 <template>
     <form class="flex flex-col gap-3 text-gray-800 dark:text-gray-300">
         <h3 class="text-2xl leading-7 text-center md:text-left">
-            Nuevo Trabajo de grado
+            Nueva Tesis doctoral
         </h3>
         <hr class="border-gray-300" />
         <section id="project" class="flex flex-col gap-3">

@@ -6,11 +6,9 @@ trait LineTrait
 {
   public function getActiveLines(): array
   {
-    return $this
-      ->where('active', 1)
-      ->get([
-        'id',
-        'name',
-      ])->toArray();
+    return $this->where('active', 1)->get([
+      'id',
+      'name',
+    ])->toArray();
   }
 }

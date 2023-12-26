@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ItemService extends Model
 {
@@ -17,7 +18,7 @@ class ItemService extends Model
         'mobilization',
     ];
 
-    public function work()
+    public function work(): BelongsTo
     {
         return $this->belongsTo(InvestigationWork::class);
     }

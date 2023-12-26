@@ -4,7 +4,16 @@
 
 import { normalizeString } from "@/Util/filters";
 
-export default function useFilters(areas, lines, initAreas, initLines) {
+export default function useFilters(
+    areas,
+    lines,
+    statuses,
+    types,
+    initAreas,
+    initLines,
+    initStatus,
+    initTypes
+) {
     /**
      * Buscar por area de investigación
      */
@@ -41,8 +50,46 @@ export default function useFilters(areas, lines, initAreas, initLines) {
         lines.value = [...initLines];
     };
 
+    /**
+     * Buscar status del proyecto
+     */
+    const searchStatus = (event) => {
+        const query = event.query;
+
+        if (query) {
+            statuses.value = initStatus.filter((status) => {
+                const word = normalizeString(query);
+                const name = normalizeString(status.name);
+                return name.indexOf(word) !== -1;
+            });
+            return;
+        }
+
+        statuses.value = [...initStatus];
+    };
+
+    /**
+     * Buscar tipo de proyecto
+     */
+    const searchType = (event) => {
+        const query = event.query;
+
+        if (query) {
+            types.value = initTypes.filter((type) => {
+                const word = normalizeString(query);
+                const name = normalizeString(type.name);
+                return name.indexOf(word) !== -1;
+            });
+            return;
+        }
+
+        types.value = [...initTypes];
+    };
+
     return {
         searchArea,
         searchLine,
+        searchStatus,
+        searchType,
     };
 }

@@ -6,21 +6,28 @@ import WorkForm from "@/Pages/InvestigationWorks/partials/WorkForm.vue";
 import DegreeWorkForm from "@/Pages/InvestigationWorks/partials/DegreeWorkForm.vue";
 import SelectButton from "primevue/selectbutton";
 import useWorkCategory from "./composables/useWorkCategory.js";
+import DoctoralThesisForm from "./partials/DoctoralThesisForm.vue";
+import ProductivePartnerForm from "./partials/ProductivePartnerForm.vue";
+import ScientificArticleForm from "./partials/ScientificArticleForm.vue";
 
 const {
     form,
     areas,
     lines,
+    authors,
+    loading,
+    types,
+    statuses,
     create,
     searchArea,
     searchLine,
-    authors,
+    searchStatus,
+    searchType,
     addAuthor,
     removeAuthor,
-    loading,
 } = useCreateInvestigationWork();
 
-const { categories, selectCategory, showForm } = useWorkCategory();
+const { categories, selectCategory } = useWorkCategory();
 </script>
 
 <template>
@@ -40,7 +47,7 @@ const { categories, selectCategory, showForm } = useWorkCategory();
                 dataKey="id"
                 aria-labelledby="custom"
                 class="flex flex-col lg:flex-row gap-2"
-                @change="showForm"
+                @change="form.category_id = selectCategory?.id"
             >
                 <template #option="p">
                     <span>{{ p.option.name }}</span>
@@ -66,6 +73,63 @@ const { categories, selectCategory, showForm } = useWorkCategory();
         <DegreeWorkForm
             :areas="areas"
             :lines="lines"
+            :statuses="statuses"
+            :types="types"
+            :authors="authors"
+            :form="form"
+            :loading="loading"
+            :search-line="searchLine"
+            :search-area="searchArea"
+            :search-status="searchStatus"
+            :search-type="searchType"
+            :add-author="addAuthor"
+            :remove-author="removeAuthor"
+            @submit.prevent="create"
+            v-if="selectCategory?.id === categories[1].id"
+            class="animate-swing-in-top-fwd"
+        />
+
+        <DoctoralThesisForm
+            :areas="areas"
+            :lines="lines"
+            :statuses="statuses"
+            :types="types"
+            :authors="authors"
+            :form="form"
+            :loading="loading"
+            :search-line="searchLine"
+            :search-area="searchArea"
+            :search-status="searchStatus"
+            :search-type="searchType"
+            :add-author="addAuthor"
+            :remove-author="removeAuthor"
+            @submit.prevent="create"
+            v-if="selectCategory?.id === categories[2].id"
+            class="animate-swing-in-top-fwd"
+        />
+
+        <ProductivePartnerForm
+            :areas="areas"
+            :lines="lines"
+            :statuses="statuses"
+            :types="types"
+            :authors="authors"
+            :form="form"
+            :loading="loading"
+            :search-line="searchLine"
+            :search-area="searchArea"
+            :search-status="searchStatus"
+            :search-type="searchType"
+            :add-author="addAuthor"
+            :remove-author="removeAuthor"
+            @submit.prevent="create"
+            v-if="selectCategory?.id === categories[3].id"
+            class="animate-swing-in-top-fwd"
+        />
+
+        <ScientificArticleForm
+            :areas="areas"
+            :lines="lines"
             :authors="authors"
             :form="form"
             :loading="loading"
@@ -74,7 +138,7 @@ const { categories, selectCategory, showForm } = useWorkCategory();
             :add-author="addAuthor"
             :remove-author="removeAuthor"
             @submit.prevent="create"
-            v-if="selectCategory?.id === categories[1].id"
+            v-if="selectCategory?.id === categories[4].id"
             class="animate-swing-in-top-fwd"
         />
     </AuthenticatedLayout>

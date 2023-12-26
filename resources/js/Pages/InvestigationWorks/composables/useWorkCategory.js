@@ -3,7 +3,7 @@
  */
 
 import { categories } from "@/Util/const";
-import { onMounted, ref, toRefs } from "vue";
+import { ref, toRefs } from "vue";
 
 export default function useWorkCategory() {
     const selectCategory = ref({

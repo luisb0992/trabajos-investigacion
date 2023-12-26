@@ -9,8 +9,13 @@ export default function useAuthors() {
 
     const addAuthor = () => {
         const author = {
+            dni: "",
             name: "",
             lastname: "",
+            email: "",
+            phone: "",
+            level_instruction: "",
+            address: "",
         };
         authors.value.push(author);
     };

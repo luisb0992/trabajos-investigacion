@@ -42,10 +42,10 @@ export default function useValidations(form) {
             errors.msjs.push(authorsRequired);
         }
 
-        if (!form.file) {
-            errors.hasErrors = true;
-            errors.msjs.push(fileRequired);
-        }
+        // if (!form.file) {
+        //     errors.hasErrors = true;
+        //     errors.msjs.push(fileRequired);
+        // }
 
         return errors;
     };
