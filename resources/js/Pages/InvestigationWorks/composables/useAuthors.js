@@ -15,6 +15,7 @@ export default function useAuthors() {
             email: "",
             phone: "",
             level_instruction: "",
+            function_project: "",
             address: "",
         };
         authors.value.push(author);

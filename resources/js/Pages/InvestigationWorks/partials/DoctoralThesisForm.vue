@@ -87,7 +87,7 @@ const props = defineProps({
                 >
                 <InputText
                     id="title"
-                    v-model="form.title"
+                    v-model="form.location"
                     aria-describedby="title-help"
                 />
                 <small id="title-help">
@@ -245,16 +245,16 @@ const props = defineProps({
                 </small>
             </div>
             <div class="flex flex-col gap-2">
-                <label for="specific_objectives" class="text-lg font-semibold">
+                <label for="specific_objective" class="text-lg font-semibold">
                     Objetivos específicos del proyecto
                 </label>
                 <Textarea
-                    v-model="form.specific_objectives"
+                    v-model="form.specific_objective"
                     autoResize
                     rows="5"
                     cols="30"
                 />
-                <small id="specific_objectives">
+                <small id="specific_objective">
                     Objetivos específicos del proyecto.
                 </small>
             </div>

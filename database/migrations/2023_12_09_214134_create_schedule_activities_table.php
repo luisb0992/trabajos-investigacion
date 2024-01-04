@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('schedule_activities', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('investigation_work_id');
+            $table->text('revision')->nullable();
+            $table->text('description')->nullable();
+            $table->text('analysis')->nullable();
+            $table->text('drafting')->nullable();
+            $table->text('conclusions')->nullable();
             $table->timestamps();
         });
     }

@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('item_services', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('investigation_work_id');
+            $table->decimal('incentive', 12, 2)->nullable();
+            $table->decimal('material_supplier', 12, 2)->nullable();
+            $table->decimal('services', 12, 2)->nullable();
+            $table->decimal('viatic', 12, 2)->nullable();
+            $table->decimal('mobilization', 12, 2)->nullable();
             $table->timestamps();
         });
     }

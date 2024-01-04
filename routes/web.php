@@ -20,7 +20,7 @@ Route::group(['prefix' => 'investigation-works', 'as' => 'investigation-works.']
     Route::get('/{work}/edit', [App\Http\Controllers\InvestigationWorkController::class, 'edit'])->name('edit');
     Route::put('/{work}', [App\Http\Controllers\InvestigationWorkController::class, 'update'])->name('update');
     Route::delete('/{work}', [App\Http\Controllers\InvestigationWorkController::class, 'destroy'])->name('destroy');
-    // Route::get('/{work}', [App\Http\Controllers\InvestigationWorkController::class, 'downloadFile'])->name('downloadFile');
+    Route::get('/{work}', [App\Http\Controllers\InvestigationWorkController::class, 'downloadFile'])->name('downloadFile');
 })->middleware(['auth']);
 
 // grupo de rutas para usuarios

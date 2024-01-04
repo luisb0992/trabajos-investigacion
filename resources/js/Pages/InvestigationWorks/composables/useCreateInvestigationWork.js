@@ -38,6 +38,7 @@ export default function useCreateInvestigationWork() {
 
     const form = useForm({
         title: "",
+        location: "",
         area: "",
         line: "",
         area_id: "",
@@ -52,10 +53,17 @@ export default function useCreateInvestigationWork() {
         justification: "",
         background: "",
         general_objective: "",
-        specific_objectives: "",
+        specific_objective: "",
         expected_results: "",
         methodology: "",
         orcid_code: "",
+        homeland_plans: "",
+        bibliography: "",
+        historical_objectives: "",
+        national_objectives: "",
+        strategic_objectives: "",
+        general_objectives: "",
+        relationship_objectives: "",
         authors: authors.value,
         aspects: [],
         items: [],
@@ -66,7 +74,6 @@ export default function useCreateInvestigationWork() {
     });
 
     const create = () => {
-        console.log(form);
         const { validate } = useValidations(form);
 
         if (validate().hasErrors) {

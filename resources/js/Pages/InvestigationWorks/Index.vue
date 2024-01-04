@@ -10,6 +10,7 @@ import InputText from "primevue/inputtext";
 import LinkDefault from "@/Components/LinkDefault.vue";
 import useIndex from "./composables/useIndex";
 import { categories } from "@/Util/const";
+import DownloadFile from "./partials/DownloadFile.vue";
 
 const {
     filters,
@@ -59,6 +60,7 @@ const {
                     paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                     :rowsPerPageOptions="[5, 10, 25]"
                     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} trabajos"
+                    id="table_index"
                 >
                     <template #header>
                         <div
@@ -126,12 +128,6 @@ const {
                             }}
                         </template>
                     </Column>
-                    <!-- <Column
-                        field="file"
-                        header="Archivo"
-                        sortable
-                        style="min-width: 10rem"
-                    ></Column> -->
                     <Column :exportable="false" style="min-width: 10rem">
                         <template #body="props">
                             <div class="flex gap-3">
@@ -153,7 +149,7 @@ const {
                                     severity="danger"
                                     @click="confirmDeleteItem(props.data.id)"
                                 />
-                                <a
+                                <!-- <a
                                     :href="pathInvWork + '/' + props.data.file"
                                     class="inline-flex justify-start items-center p-4 bg-transparent border border-solid rounded-full dark:rounded-full dark:border-blue-600 text-blue-500 border-blue-500 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-300 transition duration-200 ease-in-out"
                                     target="_blank"
@@ -161,7 +157,12 @@ const {
                                     :download="props.data.file"
                                 >
                                     <span class="pi pi-download"></span>
-                                </a>
+                                </a> -->
+
+                                <DownloadFile
+                                    :data="props.data"
+                                    :pathInvWork="pathInvWork"
+                                />
                             </div>
                         </template>
                     </Column>

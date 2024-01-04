@@ -87,7 +87,7 @@ const props = defineProps({
                 >
                 <InputText
                     id="title"
-                    v-model="form.title"
+                    v-model="form.location"
                     aria-describedby="title-help"
                 />
                 <small id="title-help">
@@ -245,16 +245,16 @@ const props = defineProps({
                 </small>
             </div>
             <div class="flex flex-col gap-2">
-                <label for="specific_objectives" class="text-lg font-semibold">
+                <label for="specific_objective" class="text-lg font-semibold">
                     Objetivos específicos del proyecto
                 </label>
                 <Textarea
-                    v-model="form.specific_objectives"
+                    v-model="form.specific_objective"
                     autoResize
                     rows="5"
                     cols="30"
                 />
-                <small id="specific_objectives">
+                <small id="specific_objective">
                     Objetivos específicos del proyecto.
                 </small>
             </div>
@@ -294,32 +294,44 @@ const props = defineProps({
                     :key="index"
                     class="flex flex-col md:flex-row justify-start gap-3 animate-fade-in-down"
                 >
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText v-model="author.dni" id="cedula" />
                         <!-- <label for="cedula">Cédula</label> -->
                         <small id="cedula-help"> Cédula del autor. </small>
                     </span>
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText v-model="author.name" id="name" />
                         <!-- <label for="name">Nombre</label> -->
                         <small id="name-help"> Nombre del autor. </small>
                     </span>
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText v-model="author.lastname" id="lastname" />
                         <!-- <label for="lastname">Apellido</label> -->
                         <small id="lastname-help"> Apellido del autor. </small>
                     </span>
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText v-model="author.email" id="lastname" />
                         <!-- <label for="email">Correo</label> -->
                         <small id="email-help"> Email del autor. </small>
                     </span>
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText v-model="author.phone" id="lastname" />
                         <!-- <label for="phone">Teléfono</label> -->
                         <small id="phone-help"> Teléfono del autor. </small>
                     </span>
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText
                             v-model="author.level_instruction"
                             id="lastname"
@@ -329,7 +341,9 @@ const props = defineProps({
                             Nivel de instrucción del autor.
                         </small>
                     </span>
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText v-model="author.address" id="lastname" />
                         <!-- <label for="address">Dirección</label> -->
                         <small id="address-help"> Dirección del autor. </small>

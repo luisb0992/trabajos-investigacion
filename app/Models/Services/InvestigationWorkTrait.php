@@ -18,4 +18,17 @@ trait InvestigationWorkTrait
     return $this
       ->load(['line:id,name', 'area:id,name', 'authors']);
   }
+
+  public function withAllRelations(): InvestigationWork
+  {
+    return $this
+      ->load([
+        'line:id,name',
+        'area:id,name',
+        'authors',
+        'homelandPlan',
+        'ethicalAspect',
+        'itemService'
+      ]);
+  }
 }

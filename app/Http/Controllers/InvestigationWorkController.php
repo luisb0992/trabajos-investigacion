@@ -42,7 +42,7 @@ class InvestigationWorkController extends Controller
 
     public function store(CreateInvestigationWorkRequest $request): Response
     {
-        $this->factory->save($request->validated());
+        $this->factory->save($request);
 
         return inertia('InvestigationWorks/Create');
     }
@@ -69,5 +69,14 @@ class InvestigationWorkController extends Controller
         $this->factory->deleteFile($work);
 
         return to_route('investigation-works.index');
+    }
+
+    public function downloadFile(InvestigationWork $work): Response
+    {
+        // dd($work->withAllRelations());
+
+        return inertia('InvestigationWorks/DownloadFile', [
+            'work' => $work->withAllRelations(),
+        ]);
     }
 }

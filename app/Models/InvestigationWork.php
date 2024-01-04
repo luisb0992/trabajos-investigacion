@@ -6,6 +6,7 @@ use App\Models\Services\InvestigationWorkTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class InvestigationWork extends Model
 {
@@ -49,5 +50,20 @@ class InvestigationWork extends Model
     public function authors(): HasMany
     {
         return $this->hasMany(WorkAuthor::class);
+    }
+
+    public function homelandPlan(): HasOne
+    {
+        return $this->hasOne(HomelandPlan::class);
+    }
+
+    public function ethicalAspect(): HasOne
+    {
+        return $this->hasOne(EthicalAspect::class);
+    }
+
+    public function itemService(): HasOne
+    {
+        return $this->hasOne(ItemService::class);
     }
 }

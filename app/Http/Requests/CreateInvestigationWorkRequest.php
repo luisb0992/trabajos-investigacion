@@ -30,6 +30,7 @@ class CreateInvestigationWorkRequest extends FormRequest
                 'line_id' => 'required|exists:lines,id',
                 'area_id' => 'required|exists:areas,id',
                 'authors' => 'required|array',
+                'methodology' => 'nullable|max:255',
             ];
         }
 
@@ -37,10 +38,12 @@ class CreateInvestigationWorkRequest extends FormRequest
         if ($this->method() === 'POST') {
             return [
                 'title' => 'required|string',
-                'file' => 'required|file',
+                // 'file' => 'required|file',
+                'file' => 'nullable',
                 'line_id' => 'required|exists:lines,id',
                 'area_id' => 'required|exists:areas,id',
                 'authors' => 'required|array',
+                'methodology' => 'nullable|max:255',
             ];
         }
     }
@@ -62,6 +65,7 @@ class CreateInvestigationWorkRequest extends FormRequest
             'area_id.exists' => 'El área no existe',
             'authors.required' => 'Los autores son requeridos',
             'authors.array' => 'Los autores deben ser un arreglo',
+            'methodology.max' => 'La metodología no debe superar los 255 caracteres',
         ];
     }
 }
