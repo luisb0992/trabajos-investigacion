@@ -9,7 +9,6 @@ import Button from "primevue/button";
 import InputText from "primevue/inputtext";
 import LinkDefault from "@/Components/LinkDefault.vue";
 import useIndex from "./composables/useIndex";
-import { categories } from "@/Util/const";
 import DownloadFile from "./partials/DownloadFile.vue";
 
 const {
@@ -115,18 +114,11 @@ const {
                         style="min-width: 10rem"
                     ></Column>
                     <Column
-                        field="category_id"
+                        field="category"
                         header="Categoria"
                         sortable
                         style="min-width: 10rem"
                     >
-                        <template #body="p">
-                            {{
-                                categories.find(
-                                    (cat) => cat.id === p.data.category_id
-                                ).name ?? "---"
-                            }}
-                        </template>
                     </Column>
                     <Column :exportable="false" style="min-width: 10rem">
                         <template #body="props">
@@ -149,16 +141,6 @@ const {
                                     severity="danger"
                                     @click="confirmDeleteItem(props.data.id)"
                                 />
-                                <!-- <a
-                                    :href="pathInvWork + '/' + props.data.file"
-                                    class="inline-flex justify-start items-center p-4 bg-transparent border border-solid rounded-full dark:rounded-full dark:border-blue-600 text-blue-500 border-blue-500 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-300 transition duration-200 ease-in-out"
-                                    target="_blank"
-                                    noopener="true"
-                                    :download="props.data.file"
-                                >
-                                    <span class="pi pi-download"></span>
-                                </a> -->
-
                                 <DownloadFile
                                     :data="props.data"
                                     :pathInvWork="pathInvWork"

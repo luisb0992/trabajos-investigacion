@@ -74,6 +74,7 @@ export default function useCreateInvestigationWork() {
     });
 
     const create = () => {
+        console.log(form.aspects);
         const { validate } = useValidations(form);
 
         if (validate().hasErrors) {

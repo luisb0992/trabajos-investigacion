@@ -50,7 +50,7 @@ class InvestigationWorkController extends Controller
     public function edit(InvestigationWork $work): Response
     {
         return inertia('InvestigationWorks/Edit', [
-            'item' => $work->getInvestigationWork(),
+            'item' => $work->withAllRelations(),
             'lines' => $this->line->getActiveLines(),
             'areas' => $this->area->getActiveAreas(),
         ]);

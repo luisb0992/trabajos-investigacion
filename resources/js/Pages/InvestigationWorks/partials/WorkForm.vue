@@ -4,6 +4,10 @@ import AutoComplete from "primevue/autocomplete";
 import Button from "primevue/button";
 
 const props = defineProps({
+    title: {
+        type: String,
+        default: "Nuevo Proyecto",
+    },
     form: {
         type: Object,
         required: true,
@@ -45,7 +49,7 @@ const props = defineProps({
 <template>
     <form class="flex flex-col gap-3 text-gray-800 dark:text-gray-300">
         <h3 class="text-2xl leading-7 text-center md:text-left">
-            Nuevo Proyecto
+            {{ title }}
         </h3>
         <hr class="border-gray-300" />
         <div class="flex flex-col gap-2">
@@ -55,9 +59,7 @@ const props = defineProps({
                 v-model="form.title"
                 aria-describedby="title-help"
             />
-            <small id="title-help">
-                El título del proyecto.
-            </small>
+            <small id="title-help"> El título del proyecto. </small>
         </div>
         <div class="flex flex-col gap-2">
             <label for="area" class="text-lg font-semibold">

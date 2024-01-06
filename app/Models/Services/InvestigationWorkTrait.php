@@ -2,6 +2,7 @@
 
 namespace App\Models\Services;
 
+use App\Enum\WorkCategoryEnum;
 use App\Models\InvestigationWork;
 
 trait InvestigationWorkTrait
@@ -10,7 +11,12 @@ trait InvestigationWorkTrait
   {
     return $this
       ->with(['line:id,name', 'area:id,name', 'authors'])
-      ->get()->toArray();
+      ->get()
+      ->map(
+        fn ($work)
+        => array_merge($work->toArray(), ['category' => $work->getCategory()])
+      )
+      ->toArray();
   }
 
   public function getInvestigationWork(): InvestigationWork
@@ -30,5 +36,10 @@ trait InvestigationWorkTrait
         'ethicalAspect',
         'itemService'
       ]);
+  }
+
+  public function getCategory(): string
+  {
+    return WorkCategoryEnum::getCategory($this->category_id);
   }
 }

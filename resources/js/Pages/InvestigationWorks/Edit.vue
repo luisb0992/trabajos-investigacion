@@ -3,23 +3,29 @@ import { Head } from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import useUpdateInvestigationWork from "./composables/useUpdateInvestigationWork";
 import WorkForm from "./partials/WorkForm.vue";
+import { categories } from "@/Util/const";
+import DegreeWorkForm from "./partials/DegreeWorkForm.vue";
 
 const {
     form,
     areas,
     lines,
+    loading,
+    authors,
+    types,
+    statuses,
     update,
     searchArea,
     searchLine,
-    authors,
+    searchStatus,
+    searchType,
     addAuthor,
     removeAuthor,
-    loading,
 } = useUpdateInvestigationWork();
 </script>
 
 <template>
-    <Head title="Actualizar Proyecto" />
+    <Head title="Actualizar Trabajo de investigación" />
     <AuthenticatedLayout>
         <WorkForm
             :areas="areas"
@@ -31,7 +37,30 @@ const {
             :search-area="searchArea"
             :add-author="addAuthor"
             :remove-author="removeAuthor"
+            :title="'Categoria: ' + categories[0].name"
             @submit.prevent="update"
+            class="animate-swing-in-top-fwd"
+            v-if="form.category_id === categories[0].id"
+        />
+
+        <DegreeWorkForm
+            :areas="areas"
+            :lines="lines"
+            :statuses="statuses"
+            :types="types"
+            :authors="authors"
+            :form="form"
+            :loading="loading"
+            :title="'Categoria: ' + categories[1].name"
+            :search-line="searchLine"
+            :search-area="searchArea"
+            :search-status="searchStatus"
+            :search-type="searchType"
+            :add-author="addAuthor"
+            :remove-author="removeAuthor"
+            @submit.prevent="update"
+            v-if="form.category_id === categories[1].id"
+            class="animate-swing-in-top-fwd"
         />
     </AuthenticatedLayout>
 </template>

@@ -11,15 +11,12 @@ export default function useDownloadFile() {
     });
 
     const downloadFile = () => {
-        // this.loadingPdf = true;
-        // this.$noty("Descargando certificado...", "info", 5000);
-
         const element = document.getElementById("data_table");
         const opt = {
             margin: 0.5,
             filename: "invoice.pdf",
             image: { type: "png", quality: 1 },
-            // html2canvas: { scale: 3 },
+            html2canvas: { scale: 3 },
             pagebreak: { mode: ["avoid-all", "css", "legacy"] },
             jsPDF: {
                 unit: "in",
@@ -28,7 +25,6 @@ export default function useDownloadFile() {
             },
         };
 
-        // New Promise-based usage:
         const pdf = html2pdf().from(element).set(opt);
         pdf.save();
     };

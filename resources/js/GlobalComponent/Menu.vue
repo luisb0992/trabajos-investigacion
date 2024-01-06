@@ -17,7 +17,10 @@ import NavLink from "@/Components/NavLink.vue";
         </NavLink>
         <NavLink
             :href="route('investigation-works.index')"
-            :active="route().current('investigation-works.index')"
+            :active="
+                route().current('investigation-works.index') ||
+                route().current('investigation-works.create')
+            "
         >
             Trabajos
         </NavLink>
