@@ -15,6 +15,7 @@ import NavLink from "@/Components/NavLink.vue";
                 route().current('users.index') ||
                 route().current('users.create')
             "
+            v-if="$page.props.roles.is_admin"
         >
             Usuarios
         </NavLink>
@@ -24,6 +25,7 @@ import NavLink from "@/Components/NavLink.vue";
                 route().current('investigation-works.index') ||
                 route().current('investigation-works.create')
             "
+            v-if="$page.props.roles.is_admin || $page.props.roles.is_user"
         >
             Trabajos
         </NavLink>

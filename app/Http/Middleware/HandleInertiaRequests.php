@@ -44,6 +44,15 @@ class HandleInertiaRequests extends Middleware
             'paths' => [
                 'inv_work' => env('APP_URL') . 'storage/' . $inv_work,
             ],
+            'session_msj' => [
+                'error' => session('error_msj'),
+                'success' => session('success_msj'),
+                'info' => session('info_msj'),
+            ],
+            'roles' => [
+                'is_admin' => $request->user()->isAdmin(),
+                'is_user' => $request->user()->isUser(),
+            ],
         ];
     }
 }

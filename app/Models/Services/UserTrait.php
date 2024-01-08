@@ -32,4 +32,14 @@ trait UserTrait
     $this->active = 0;
     $this->update();
   }
+
+  public function isAdmin(): bool
+  {
+    return $this->rol_id === UserRolEnum::ADMIN;
+  }
+
+  public function isUser(): bool
+  {
+    return $this->rol_id === UserRolEnum::REGISTER;
+  }
 }

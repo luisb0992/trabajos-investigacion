@@ -131,6 +131,7 @@ const {
                                         )
                                     "
                                     class="bg-transparent border border-solid rounded-full dark:rounded-full dark:border-yellow-600 text-yellow-500 border-yellow-500 hover:border-yellow-600 hover:text-yellow-600 hover:bg-yellow-300 transition duration-200 ease-in-out"
+                                    v-if="$page.props.roles.is_admin"
                                 >
                                     <span class="pi pi-pencil"></span>
                                 </LinkDefault>
@@ -140,6 +141,7 @@ const {
                                     rounded
                                     severity="danger"
                                     @click="confirmDeleteItem(props.data.id)"
+                                    v-if="$page.props.roles.is_admin"
                                 />
                                 <DownloadFile
                                     :data="props.data"

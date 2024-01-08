@@ -1,5 +1,6 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import SessionMessage from "@/Components/SessionMessage.vue";
 import { Head } from "@inertiajs/vue3";
 </script>
 
@@ -7,9 +8,8 @@ import { Head } from "@inertiajs/vue3";
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
-        <section
-            class="flex flex-col gap-3"
-        >
+        <SessionMessage />
+        <section class="flex flex-col gap-3">
             <h3
                 class="text-gray-900 dark:text-gray-300 text-xl md:text-5xl text-center leading-8 md:leading-[4rem]"
             >
