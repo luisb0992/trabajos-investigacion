@@ -22,28 +22,74 @@ class CreateInvestigationWorkRequest extends FormRequest
     public function rules(): array
     {
         // si es un update
-        // dd($this->all());
         if ($this->method() === 'PUT') {
             return [
-                'title' => 'required|string',
-                'file' => 'nullable',
+                'title' => 'required|string|max:250',
+                'file' => 'nullable|file|max:10240',
                 'line_id' => 'required|exists:lines,id',
                 'area_id' => 'required|exists:areas,id',
+                'category_id' => 'required',
                 'authors' => 'required|array',
                 'methodology' => 'nullable|max:255',
+                'es_summary' => 'nullable|max:2000',
+                'en_summary' => 'nullable|max:2000',
+                'email' => 'nullable|max:255',
+                'profile' => 'nullable|max:255',
+                'orcid_code' => 'nullable|max:255',
+                'type' => 'nullable',
+                'status' => 'nullable',
+                'location' => 'nullable|max:255',
+                'approach' => 'nullable|max:2000',
+                'justification' => 'nullable|max:2000',
+                'background' => 'nullable|max:2000',
+                'general_objective' => 'nullable|max:2000',
+                'specific_objective' => 'nullable|max:2000',
+                'expected_results' => 'nullable|max:2000',
+                'bibliography' => 'nullable|max:2000',
+                'homeland_plans' => 'nullable|max:2000',
+                'historical_objectives' => 'nullable|max:2000',
+                'national_objectives' => 'nullable|max:2000',
+                'strategic_objectives' => 'nullable|max:2000',
+                'general_objectives' => 'nullable|max:2000',
+                'relationship_objectives' => 'nullable|max:2000',
+                'aspects' => 'nullable|array',
+                'items' => 'nullable|array',
             ];
         }
 
         // si es un create
         if ($this->method() === 'POST') {
             return [
-                'title' => 'required|string',
-                // 'file' => 'required|file',
-                'file' => 'nullable',
+                'title' => 'required|string|max:250',
+                'file' => 'nullable|file|max:10240',
                 'line_id' => 'required|exists:lines,id',
                 'area_id' => 'required|exists:areas,id',
+                'category_id' => 'required',
                 'authors' => 'required|array',
                 'methodology' => 'nullable|max:255',
+                'es_summary' => 'nullable|max:2000',
+                'en_summary' => 'nullable|max:2000',
+                'email' => 'nullable|max:255',
+                'profile' => 'nullable|max:255',
+                'orcid_code' => 'nullable|max:255',
+                'type' => 'nullable',
+                'status' => 'nullable',
+                'location' => 'nullable|max:255',
+                'approach' => 'nullable|max:2000',
+                'justification' => 'nullable|max:2000',
+                'background' => 'nullable|max:2000',
+                'general_objective' => 'nullable|max:2000',
+                'specific_objective' => 'nullable|max:2000',
+                'expected_results' => 'nullable|max:2000',
+                'bibliography' => 'nullable|max:2000',
+                'homeland_plans' => 'nullable|max:2000',
+                'historical_objectives' => 'nullable|max:2000',
+                'national_objectives' => 'nullable|max:2000',
+                'strategic_objectives' => 'nullable|max:2000',
+                'general_objectives' => 'nullable|max:2000',
+                'relationship_objectives' => 'nullable|max:2000',
+                'aspects' => 'nullable|array',
+                'items' => 'nullable|array',
             ];
         }
     }
@@ -57,8 +103,10 @@ class CreateInvestigationWorkRequest extends FormRequest
     {
         return [
             'title.required' => 'El título es requerido',
+            'title.max' => 'El título no debe sobrepasar los 250 caracteres',
             'file.required' => 'El archivo es requerido',
             'file.file' => 'El archivo debe ser un formato valido (pdf)',
+            'category_id.required' => 'La categoria del proyecto  es requerida',
             'line_id.required' => 'La línea es requerida',
             'line_id.exists' => 'La línea no existe',
             'area_id.required' => 'El área es requerida',

@@ -16,7 +16,6 @@ const DEGREE_WORK = categories.value[1].id;
 const DOCTORAL_THESIS = categories.value[2].id;
 const PRODUCTIVE_PARTNER = categories.value[3].id;
 const SCIENTIFIC_ARTICLE = categories.value[4].id;
-console.log(SCIENTIFIC_ARTICLE);
 </script>
 <template>
     <div

@@ -73,8 +73,6 @@ class InvestigationWorkController extends Controller
 
     public function downloadFile(InvestigationWork $work): Response
     {
-        // dd($work->withAllRelations());
-
         return inertia('InvestigationWorks/DownloadFile', [
             'work' => $work->withAllRelations(),
         ]);

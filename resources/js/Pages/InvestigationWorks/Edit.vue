@@ -5,6 +5,9 @@ import useUpdateInvestigationWork from "./composables/useUpdateInvestigationWork
 import WorkForm from "./partials/WorkForm.vue";
 import { categories } from "@/Util/const";
 import DegreeWorkForm from "./partials/DegreeWorkForm.vue";
+import DoctoralThesisForm from "./partials/DoctoralThesisForm.vue";
+import ProductivePartnerForm from "./partials/ProductivePartnerForm.vue";
+import ScientificArticleForm from "./partials/ScientificArticleForm.vue";
 
 const {
     form,
@@ -60,6 +63,62 @@ const {
             :remove-author="removeAuthor"
             @submit.prevent="update"
             v-if="form.category_id === categories[1].id"
+            class="animate-swing-in-top-fwd"
+        />
+
+        <DoctoralThesisForm
+            :areas="areas"
+            :lines="lines"
+            :statuses="statuses"
+            :types="types"
+            :authors="authors"
+            :form="form"
+            :loading="loading"
+            :title="'Categoria: ' + categories[2].name"
+            :search-line="searchLine"
+            :search-area="searchArea"
+            :search-status="searchStatus"
+            :search-type="searchType"
+            :add-author="addAuthor"
+            :remove-author="removeAuthor"
+            @submit.prevent="update"
+            v-if="form.category_id === categories[2].id"
+            class="animate-swing-in-top-fwd"
+        />
+
+        <ProductivePartnerForm
+            :areas="areas"
+            :lines="lines"
+            :statuses="statuses"
+            :types="types"
+            :authors="authors"
+            :form="form"
+            :loading="loading"
+            :title="'Categoria: ' + categories[3].name"
+            :search-line="searchLine"
+            :search-area="searchArea"
+            :search-status="searchStatus"
+            :search-type="searchType"
+            :add-author="addAuthor"
+            :remove-author="removeAuthor"
+            @submit.prevent="update"
+            v-if="form.category_id === categories[3].id"
+            class="animate-swing-in-top-fwd"
+        />
+
+        <ScientificArticleForm
+            :areas="areas"
+            :lines="lines"
+            :authors="authors"
+            :form="form"
+            :loading="loading"
+            :title="'Categoria: ' + categories[4].name"
+            :search-line="searchLine"
+            :search-area="searchArea"
+            :add-author="addAuthor"
+            :remove-author="removeAuthor"
+            @submit.prevent="update"
+            v-if="form.category_id === categories[4].id"
             class="animate-swing-in-top-fwd"
         />
     </AuthenticatedLayout>

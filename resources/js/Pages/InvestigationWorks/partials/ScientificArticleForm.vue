@@ -5,6 +5,10 @@ import Button from "primevue/button";
 import Textarea from "primevue/textarea";
 
 const props = defineProps({
+    title: {
+        type: String,
+        default: "Nuevo Articulo científico",
+    },
     form: {
         type: Object,
         required: true,
@@ -46,7 +50,7 @@ const props = defineProps({
 <template>
     <form class="flex flex-col gap-3 text-gray-800 dark:text-gray-300">
         <h3 class="text-2xl leading-7 text-center md:text-left">
-            Nuevo Articulo científico
+            {{ title }}
         </h3>
         <hr class="border-gray-300" />
         <section id="project" class="flex flex-col gap-3">

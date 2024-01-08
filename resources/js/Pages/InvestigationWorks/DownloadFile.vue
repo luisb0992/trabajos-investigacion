@@ -92,7 +92,10 @@ const { work, downloadFile } = useDownloadFile();
                                 Tipo de proyecto
                             </td>
                             <td class="px-2 pb-4">
-                                {{ projectTypes[work.type]?.name ?? "---" }}
+                                {{
+                                    projectTypes.find((t) => t.id === work.type)
+                                        .name ?? "---"
+                                }}
                             </td>
                         </tr>
                         <tr class="bg-white border-b border-gray-300">
@@ -100,7 +103,11 @@ const { work, downloadFile } = useDownloadFile();
                                 Estado del proyecto
                             </td>
                             <td class="px-2 pb-4">
-                                {{ projectStatus[work.status]?.name ?? "---" }}
+                                {{
+                                    projectStatus.find(
+                                        (s) => s.id === work.status
+                                    ).name ?? "---"
+                                }}
                             </td>
                         </tr>
                         <tr class="bg-white border-b border-gray-300">

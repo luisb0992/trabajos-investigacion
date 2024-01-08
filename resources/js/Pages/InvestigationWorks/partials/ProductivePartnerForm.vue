@@ -11,6 +11,10 @@ import InputNumber from "primevue/inputnumber";
 import { aspects, items } from "@/Util/const.js";
 
 const props = defineProps({
+    title: {
+        type: String,
+        default: "Nueva Proyecto Socio productivo",
+    },
     form: {
         type: Object,
         required: true,
@@ -68,7 +72,7 @@ const props = defineProps({
 <template>
     <form class="flex flex-col gap-3 text-gray-800 dark:text-gray-300">
         <h3 class="text-2xl leading-7 text-center md:text-left">
-            Nueva Proyecto Socio productivo
+            {{ title }}
         </h3>
         <hr class="border-gray-300" />
         <section id="project" class="flex flex-col gap-3">

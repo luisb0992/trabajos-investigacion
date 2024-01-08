@@ -14,7 +14,10 @@ import { user } from "@/Util/auth";
             </ResponsiveNavLink>
             <ResponsiveNavLink
                 :href="route('users.index')"
-                :active="route().current('users.index')"
+                :active="
+                    route().current('users.index') ||
+                    route().current('users.create')
+                "
             >
                 Usuarios
             </ResponsiveNavLink>

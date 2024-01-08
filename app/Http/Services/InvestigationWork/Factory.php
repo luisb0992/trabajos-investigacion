@@ -26,7 +26,6 @@ class Factory
     $categoryID = intval($data->category_id);
     $authors = $data->authors;
     $file = $data->file;
-    // dd($data->all());
 
     // Cat Proyectos
     if ($categoryID === WorkCategoryEnum::PROJECT) {
@@ -133,15 +132,58 @@ class Factory
   // actualizar un trabajo de investigación
   public function update(array $data, InvestigationWork $work): InvestigationWork
   {
-    $authors = $data['authors'];
-    $file = $data['file'];
+    $data = new Request($data);
+    $authors = $data->authors;
+    $file = $data->file;
+    $categoryID = intval($data->category_id);
+    $updateData = [];
 
-    if ($file instanceof UploadedFile) {
-      $data['file'] = $this->saveFile($file);
-      $this->deleteFile($work);
+    // cat proyecto
+    if ($categoryID === WorkCategoryEnum::PROJECT) {
+      $updateData = $this->util->onlyDataProject($data);
+
+      if ($file instanceof UploadedFile) {
+        $updateData['file'] = $this->saveFile($file);
+        $this->deleteFile($work);
+      }
     }
 
-    $work->update($data);
+    // Cat trabajos de grado
+    // Cat tesis doctoral
+    // cat socio productivo
+    if (
+      $categoryID === WorkCategoryEnum::DEGREE_WORK ||
+      $categoryID === WorkCategoryEnum::DOCTORAL_THESIS ||
+      $categoryID === WorkCategoryEnum::PRODUCTIVE_PARTNER
+    ) {
+      $updateData = $this->util->onlyDataDegreeAndDoctoralAndProductive($data);
+      $homeland = $this->util->onlyDataHomeland($data);
+      $aspects = $this->util->filterAspects($data->aspects);
+      $items = $this->util->filterItems($data->items);
+
+      // guardar plan de la patria
+      $work->homelandPlan()->delete();
+      $work->homelandPlan()->create($homeland);
+      // guardar aspectos éticos
+      $work->ethicalAspect()->delete();
+      $work->ethicalAspect()->create($aspects);
+      // guardar rubros
+      $work->itemService()->delete();
+      $work->itemService()->create($items);
+    }
+
+    // cat articulo científico
+    if ($categoryID === WorkCategoryEnum::SCIENTIFIC_ARTICLE) {
+      // la data
+      $updateData = $this->util->onlyDataScientific($data);
+      // actualizar el archivo
+      if ($file instanceof UploadedFile) {
+        $updateData['file'] = $this->saveFile($file);
+        $this->deleteFile($work);
+      }
+    }
+
+    $work->update($updateData);
     $this->saveAuthors($authors, $work);
 
     return $work;
