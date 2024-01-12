@@ -25,7 +25,7 @@ class CreateInvestigationWorkRequest extends FormRequest
         if ($this->method() === 'PUT') {
             return [
                 'title' => 'required|string|max:250',
-                'file' => 'nullable|file|max:10240',
+                'file' => 'nullable|max:10240',
                 'line_id' => 'required|exists:lines,id',
                 'area_id' => 'required|exists:areas,id',
                 'category_id' => 'required',
@@ -61,7 +61,7 @@ class CreateInvestigationWorkRequest extends FormRequest
         if ($this->method() === 'POST') {
             return [
                 'title' => 'required|string|max:250',
-                'file' => 'nullable|file|max:10240',
+                'file' => 'nullable|max:10240',
                 'line_id' => 'required|exists:lines,id',
                 'area_id' => 'required|exists:areas,id',
                 'category_id' => 'required',

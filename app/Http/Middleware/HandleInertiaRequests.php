@@ -50,8 +50,8 @@ class HandleInertiaRequests extends Middleware
                 'info' => session('info_msj'),
             ],
             'roles' => [
-                'is_admin' => $request->user()->isAdmin(),
-                'is_user' => $request->user()->isUser(),
+                'is_admin' => $request->user()?->isAdmin(),
+                'is_user' => $request->user()?->isUser(),
             ],
         ];
     }

@@ -108,6 +108,7 @@ class AreaSeeder extends Seeder
             ),
         );
 
+        Area::truncate();
         foreach ($areas as $area) {
             Area::create([
                 'id' => $area[0],

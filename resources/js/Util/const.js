@@ -13,12 +13,12 @@ export const roles = ref([
     },
     {
         id: 2,
-        name: "Registrador",
+        name: "Usuario",
     },
-    {
-        id: 3,
-        name: "Estudiante",
-    },
+    // {
+    //     id: 3,
+    //     name: "Estudiante",
+    // },
 ]);
 
 /**

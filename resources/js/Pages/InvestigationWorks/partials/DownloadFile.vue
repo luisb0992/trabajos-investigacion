@@ -30,6 +30,7 @@ const SCIENTIFIC_ARTICLE = categories.value[4].id;
             target="_blank"
             noopener="true"
             :download="data.file"
+            v-if="data.file"
         >
             <span class="pi pi-download"></span>
         </a>

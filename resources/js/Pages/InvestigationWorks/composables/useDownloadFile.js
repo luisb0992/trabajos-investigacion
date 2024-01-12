@@ -14,7 +14,7 @@ export default function useDownloadFile() {
         const element = document.getElementById("data_table");
         const opt = {
             margin: 0.5,
-            filename: "invoice.pdf",
+            filename: "informe.pdf",
             image: { type: "jpeg", quality: 0.8 },
             html2canvas: { scale: 3 },
             pagebreak: { mode: ["avoid-all", "css", "legacy"] },

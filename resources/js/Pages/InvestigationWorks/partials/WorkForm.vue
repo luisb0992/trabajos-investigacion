@@ -100,11 +100,11 @@ const props = defineProps({
             <small id="title-help"> La linea de investigación. </small>
         </div>
         <div class="flex flex-col gap-2">
-            <label for="autor" class="text-lg font-semibold"> Autores </label>
+            <label for="autor" class="text-lg font-semibold mb-3"> Autores </label>
             <div
                 v-for="(author, index) in authors"
                 :key="index"
-                class="flex flex-col md:flex-row justify-start gap-3 animate-fade-in-down"
+                class="flex flex-col md:flex-row justify-start gap-3 animate-fade-in-down mb-5"
             >
                 <span class="p-float-label flex flex-col gap-2">
                     <InputText v-model="author.name" id="name" />

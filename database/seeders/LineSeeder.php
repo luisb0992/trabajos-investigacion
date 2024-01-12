@@ -89,6 +89,7 @@ class LineSeeder extends Seeder
             ),
         );
 
+        Line::truncate();
         foreach ($lineas as $linea) {
             Line::create([
                 'id' => $linea[0],
