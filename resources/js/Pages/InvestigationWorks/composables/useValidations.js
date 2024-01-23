@@ -4,6 +4,10 @@
 
 import {
     areaRequired,
+    authorsDNIHasAMax,
+    authorsHasANumber,
+    authorsLastnameIsMax,
+    authorsNameIsMax,
     authorsRequired,
     fileRequired,
     lineRequired,
@@ -14,6 +18,22 @@ import { computed } from "vue";
 export default function useValidations(form) {
     const hasAuthors = computed(() => {
         return form.authors.every((a) => a.name && a.lastname);
+    });
+
+    const allDNIAuthorsNumber = computed(() => {
+        return form.authors.every((a) => Number(a.dni));
+    });
+
+    const allDNIAuthorsIsMax = computed(() => {
+        return form.authors.every((a) => a.dni.length <= 8);
+    });
+
+    const allNameIAuthorsIsMax = computed(() => {
+        return form.authors.every((a) => a.dni.length <= 254);
+    });
+
+    const allLastnameAuthorsIsMax = computed(() => {
+        return form.authors.every((a) => a.dni.length <= 254);
     });
 
     const validate = () => {
@@ -40,6 +60,26 @@ export default function useValidations(form) {
         if (!hasAuthors.value) {
             errors.hasErrors = true;
             errors.msjs.push(authorsRequired);
+        }
+
+        if (!allDNIAuthorsNumber.value) {
+            errors.hasErrors = true;
+            errors.msjs.push(authorsHasANumber);
+        }
+
+        if (!allDNIAuthorsIsMax.value) {
+            errors.hasErrors = true;
+            errors.msjs.push(authorsDNIHasAMax);
+        }
+
+        if (!allNameIAuthorsIsMax.value) {
+            errors.hasErrors = true;
+            errors.msjs.push(authorsNameIsMax);
+        }
+
+        if (!allLastnameAuthorsIsMax.value) {
+            errors.hasErrors = true;
+            errors.msjs.push(authorsLastnameIsMax);
         }
 
         // if (!form.file) {

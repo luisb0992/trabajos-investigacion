@@ -106,6 +106,20 @@ export const lineRequired = "La línea de investigación es requerida";
 // autores
 export const authorsRequired = "Debe agregar al menos un autor";
 
+// dni debe ser un nombre
+export const authorsHasANumber = "Debe ingresar solo números para la cedula";
+
+// la cedula no debe ser mayor a 8
+export const authorsDNIHasAMax =
+    "Debe ingresar un máximo de 8 números para la cedula";
+
+// el nombre no debe ser mayor a 254 caracteres
+export const authorsNameIsMax = "El nombre no debe superar los 254 caracteres";
+
+// el apellido no debe ser mayor a 254 caracteres
+export const authorsLastnameIsMax =
+    "El apellido no debe superar los 254 caracteres";
+
 // archivo
 export const fileRequired = "Debe seleccionar al menos un archivo";
 

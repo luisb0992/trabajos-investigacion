@@ -185,8 +185,8 @@ export default function useUpdateInvestigationWork() {
     };
 
     const update = () => {
-        console.log(form.aspects);
-        console.log(form.items);
+        // console.log(form.aspects);
+        // console.log(form.items);
         const { validate } = useValidations(form);
         if (validate().hasErrors) {
             const errors = validate().msjs.join("<br>");

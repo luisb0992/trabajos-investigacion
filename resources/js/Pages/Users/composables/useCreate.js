@@ -2,12 +2,12 @@
  * Gestion de creación de un nuevo trabajo de investigación
  */
 
-import { useForm } from "@inertiajs/vue3";
-import { ref, toRefs } from "vue";
 import { alertError, alertSuccess, validateRequest } from "@/Util/alerts";
-import { success, userCreated, validateFields } from "@/Util/messages";
-import { roles } from "@/Util/const.js";
 import { normalizeString } from "@/Util/filters";
+import { ref, toRefs } from "vue";
+import { roles } from "@/Util/const.js";
+import { success, userCreated, validateFields } from "@/Util/messages";
+import { useForm } from "@inertiajs/vue3";
 import useValidations from "./useValidations";
 
 export default function useCreate() {

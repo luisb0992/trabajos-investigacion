@@ -74,7 +74,6 @@ export default function useCreateInvestigationWork() {
     });
 
     const create = () => {
-        console.log(form.aspects);
         const { validate } = useValidations(form);
 
         if (validate().hasErrors) {
@@ -90,6 +89,7 @@ export default function useCreateInvestigationWork() {
                 authors.value = [];
                 addAuthor();
                 alertSuccess(success, workCreated);
+                globalThis.location = route("investigation-works.index");
             },
             onError: (errors) => validateRequest(errors),
             onFinish: () => (loading.value = false),

@@ -107,6 +107,11 @@ const props = defineProps({
                 class="flex flex-col md:flex-row justify-start gap-3 animate-fade-in-down mb-5"
             >
                 <span class="p-float-label flex flex-col gap-2">
+                    <InputText v-model="author.dni" id="dni" />
+                    <label for="dni">Cédula</label>
+                    <small id="dni-help"> Cédula del autor. </small>
+                </span>
+                <span class="p-float-label flex flex-col gap-2">
                     <InputText v-model="author.name" id="name" />
                     <label for="name">Nombre</label>
                     <small id="name-help"> Nombre del autor. </small>
