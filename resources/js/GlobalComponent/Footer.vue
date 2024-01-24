@@ -25,7 +25,7 @@ const year = new Date().getFullYear();
                         <br />
                         <span class="font-extralight">Rector.</span>
                     </p>
-                    <p class="font-semibold">
+                    <p class="font-semibold md:-ml-12 2xl:ml-0">
                         Dr. Giusseppe Schambery
                         <br />
                         <span class="font-extralight"
@@ -48,7 +48,7 @@ const year = new Date().getFullYear();
                         <br />
                         <span class="font-extralight">Secretario.</span>
                     </p>
-                    <p class="font-semibold md:ml-6">
+                    <p class="font-semibold md:-ml-7 2xl:ml-6">
                         Dra. Beysimar Escobar
                         <br />
                         <span class="font-extralight">
@@ -73,18 +73,18 @@ const year = new Date().getFullYear();
                             Directora de Socializacion del Conocimiento.
                         </span>
                     </p>
-                    <p class="font-semibold md:-ml-36">
+                    <p class="font-semibold md:-ml-60 2xl:-ml-48">
                         Lcdo. Hector Parra
                         <br />
                         <span class="font-extralight">
                             Director de Produccion.
                         </span>
                     </p>
-                    <p class="font-semibold md:-mr-16">
+                    <p class="font-semibold">
                         Dra. Lila Martinez
                         <br />
                         <span class="font-extralight">
-                            Directora de Control y Seguimiento.
+                            Directora de Control...
                         </span>
                     </p>
                 </div>
