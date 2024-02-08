@@ -10,6 +10,7 @@ import useAuthors from "@/Pages/InvestigationWorks/composables/useAuthors.js";
 import useProps from "./useProps";
 import useValidations from "./useValidations";
 import useFilters from "./useFilters";
+import { quarters } from "@/Util/const";
 
 export default function useCreateInvestigationWork() {
     const loading = ref(false);
@@ -67,6 +68,7 @@ export default function useCreateInvestigationWork() {
         authors: authors.value,
         aspects: [],
         items: [],
+        activities: [],
     });
 
     onMounted(() => {
@@ -96,6 +98,56 @@ export default function useCreateInvestigationWork() {
         });
     };
 
+    const assignActivity = (quarter, id, checked) => {
+        let key = "one";
+
+        if (quarter == quarters.value.one) {
+            key = "one";
+        } else if (quarter == quarters.value.two) {
+            key = "two";
+        } else if (quarter == quarters.value.three) {
+            key = "three";
+        } else if (quarter == quarters.value.four) {
+            key = "four";
+        }
+
+        // remover
+        if (!checked) {
+            const activity = form.activities[id];
+
+            if (activity) {
+                const hasQuarter = activity[key] ? true : false;
+
+                if (hasQuarter) {
+                    // eliminar del array
+                    delete activity[key];
+                }
+            }
+        }
+
+        // agregar
+        if (checked) {
+            const activity = form.activities[id];
+
+            if (!activity) {
+                const act = (form.activities[id] = {});
+                act[key] = quarter;
+                console.log(form.activities);
+                return false;
+            }
+
+            if (activity) {
+                const hasQuarter = activity[key] ? true : false;
+
+                if (!hasQuarter) {
+                    activity[key] = quarter;
+                }
+            }
+        }
+
+        console.log(form.activities);
+    };
+
     return {
         ...toRefs({
             areas,
@@ -113,5 +165,6 @@ export default function useCreateInvestigationWork() {
         searchStatus,
         searchType,
         removeAuthor,
+        assignActivity,
     };
 }

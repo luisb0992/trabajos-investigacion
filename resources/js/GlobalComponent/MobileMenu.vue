@@ -30,7 +30,7 @@ import { user } from "@/Util/auth";
                 "
                 v-if="$page.props.roles.is_admin || $page.props.roles.is_user"
             >
-                Trabajos
+                Productos
             </ResponsiveNavLink>
         </div>
         <!-- /links -->

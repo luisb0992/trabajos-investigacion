@@ -27,7 +27,7 @@ import NavLink from "@/Components/NavLink.vue";
             "
             v-if="$page.props.roles.is_admin || $page.props.roles.is_user"
         >
-            Trabajos
+            Productos
         </NavLink>
     </div>
 </template>

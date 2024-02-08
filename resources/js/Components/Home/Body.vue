@@ -2,7 +2,7 @@
 import { reactive } from "vue";
 
 const sectionOne = reactive({
-    title: "Decanato de Investigación.",
+    title: "Decanato de investigación, producción y socialización del conocimiento Unerg.",
     sub: `Es el encargado de articular los procesos relacionados con la
                 investigación, la participación directa e indirecta en los
                 procesos de producción y productividad, así como la
@@ -42,7 +42,7 @@ const sectionThree = reactive({
     <section class="grid grid-cols-1 md:grid-cols-2">
         <div class="flex flex-col justify-center items-center px-6 py-10 gap-5">
             <h1
-                class="text-xl md:text-5xl leading-5 font-bold text-gray-800 dark:text-gray-300 px-3 lg:px-0"
+                class="text-xl md:text-5xl text-center leading-5 font-bold text-gray-800 dark:text-gray-300 px-3 lg:px-0 max-w-2xl"
             >
                 {{ sectionOne.title }}
             </h1>
@@ -57,7 +57,7 @@ const sectionThree = reactive({
             <img
                 src="./../../../images/home/decanato.webp"
                 :alt="sectionOne.title"
-                class="object-cover object-center w-full h-full"
+                class="object-cover object-center w-full h-full md:min-h-[600px]"
             />
         </div>
     </section>
@@ -68,7 +68,7 @@ const sectionThree = reactive({
             <img
                 src="./../../../images/home/decanato-mision.webp"
                 :alt="sectionTwo.title"
-                class="object-cover object-center w-full h-full"
+                class="object-cover object-center w-full h-full md:min-h-[600px]"
             />
         </div>
         <div class="flex flex-col justify-center items-center gap-5 px-6 py-10">
@@ -103,7 +103,7 @@ const sectionThree = reactive({
             <img
                 src="./../../../images/home/decanato-vision.webp"
                 :alt="sectionThree.title"
-                class="object-cover object-center w-full h-full"
+                class="object-cover object-center w-full h-full md:min-h-[600px]"
             />
         </div>
     </section>

@@ -212,3 +212,75 @@ export const items = ref([
         amount: 0,
     },
 ]);
+
+/**
+ * Redes sociales
+ */
+export const RRSS = ref({
+    facebook: "https://www.facebook.com/oficial.unerg",
+    twitter: "https://twitter.com/OficialUnerg",
+    instagram: "https://www.instagram.com/oficial_unerg/",
+});
+
+/**
+ * Actividades para el cronograma
+ */
+export const activities = ref([
+    {
+        id: 1,
+        activity:
+            "Revision y búsqueda de la información del tema y antecedentes.",
+        select_1: false,
+        select_2: false,
+        select_3: false,
+        select_4: false,
+        value: "revision",
+    },
+    {
+        id: 2,
+        activity:
+            "Descripción de la inquietud científica, marco teórico y metodología.",
+        select_1: false,
+        select_2: false,
+        select_3: false,
+        select_4: false,
+        value: "description",
+    },
+    {
+        id: 3,
+        activity: "Análisis de los textos investigados.",
+        select_1: false,
+        select_2: false,
+        select_3: false,
+        select_4: false,
+        value: "analysis",
+    },
+    {
+        id: 4,
+        activity: "Redacción de los resultados.",
+        select_1: false,
+        select_2: false,
+        select_3: false,
+        select_4: false,
+        value: "drafting",
+    },
+    {
+        id: 5,
+        activity: "Conclusiones y recomendaciones.",
+        select_1: false,
+        select_2: false,
+        select_3: false,
+        select_4: false,
+        value: "conclusions",
+    },
+]);
+
+/**
+ * Trimestres del añó
+ */
+export const quarters = ref({
+    one: "E-F-M",
+    two: "A-M-J",
+    three: "J-A-S",
+    four: "O-N-D",
+});

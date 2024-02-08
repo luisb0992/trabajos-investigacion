@@ -1,4 +1,6 @@
 <script setup>
+import SocialMedia from "@/Components/SocialMedia.vue";
+
 const year = new Date().getFullYear();
 </script>
 <template>
@@ -18,75 +20,79 @@ const year = new Date().getFullYear();
                     Autoridades
                 </h3>
                 <div
-                    class="flex justify-between items-center flex-col md:flex-row gap-5 py-5"
+                    class="flex flex-col md:flex-row justify-between items-center"
                 >
-                    <p class="font-semibold">
-                        Dr. José Ángel Torrealba Torres
-                        <br />
-                        <span class="font-extralight">Rector.</span>
-                    </p>
-                    <p class="font-semibold">
-                        Dr. Giusseppe Schambery
-                        <br />
-                        <span class="font-extralight"
-                            >Vicerrector Académico Encargado.</span
-                        >
-                    </p>
-                    <p class="font-semibold">
-                        Dr. Juan Montenegro
-                        <br />
-                        <span class="font-extralight"
-                            >Vicerrector Administrativo.</span
-                        >
-                    </p>
-                </div>
-                <div
-                    class="flex justify-between items-center flex-col md:flex-row gap-5 py-5"
-                >
-                    <p class="font-semibold">
-                        Dr. Carlos Jiménez
-                        <br />
-                        <span class="font-extralight">Secretario.</span>
-                    </p>
-                    <p class="font-semibold md:ml-6">
-                        Dra. Beysimar Escobar
-                        <br />
-                        <span class="font-extralight">
-                            Decana de Investigación.
-                        </span>
-                    </p>
-                    <p class="font-semibold">
-                        MSc. Merly Orta
-                        <br />
-                        <span class="font-extralight"
-                            >Directora de Investigación.</span
-                        >
-                    </p>
-                </div>
-                <div
-                    class="flex justify-between items-center flex-col md:flex-row gap-5 py-5"
-                >
-                    <p class="font-semibold">
-                        Msc. Mery Caldera
-                        <br />
-                        <span class="font-extralight">
-                            Directora de Socializacion del Conocimiento.
-                        </span>
-                    </p>
-                    <p class="font-semibold md:-ml-36">
-                        Lcdo. Hector Parra
-                        <br />
-                        <span class="font-extralight">
-                            Director de Produccion.
-                        </span>
-                    </p>
-                    <p class="font-semibold md:-mr-16">
-                        Dra. Lila Martinez
-                        <br />
-                        <span class="font-extralight">
-                            Directora de Control y Seguimiento.
-                        </span>
-                    </p>
+                    <div
+                        class="flex flex-col justify-between items-center md:items-start gap-10 py-5"
+                    >
+                        <p class="font-semibold md:text-left text-center">
+                            Dr. Cesar Augusto Gómez García
+                            <br />
+                            <span class="font-extralight">Rector.</span>
+                        </p>
+                        <p class="font-semibold md:text-left text-center">
+                            Dra. Joali moreno
+                            <br />
+                            <span class="font-extralight">
+                                Vicerrectora Académica.
+                            </span>
+                        </p>
+                        <p class="font-semibold md:text-left text-center">
+                            Dr. Juan Montenegro
+                            <br />
+                            <span class="font-extralight">
+                                Vicerrector Administrativo.
+                            </span>
+                        </p>
+                    </div>
+                    <div
+                        class="flex flex-col justify-between items-center md:items-start gap-10 py-5"
+                    >
+                        <p class="font-semibold md:text-left text-center">
+                            Dra. Grevimar Carpavire
+                            <br />
+                            <span class="font-extralight">Secretario.</span>
+                        </p>
+                        <p class="font-semibold md:text-left text-center">
+                            Dra. Beysimar Escobar
+                            <br />
+                            <span class="font-extralight">
+                                Decana de Investigación.
+                            </span>
+                        </p>
+                        <p class="font-semibold md:text-left text-center">
+                            MSc. Merly Orta
+                            <br />
+                            <span class="font-extralight">
+                                Directora de Investigación.
+                            </span>
+                        </p>
+                    </div>
+                    <div
+                        class="flex flex-col justify-between items-center md:items-start gap-10 py-5"
+                    >
+                        <p class="font-semibold md:text-left text-center">
+                            Msc. Mery Caldera
+                            <br />
+                            <span class="font-extralight">
+                                Directora de Socializacion del Conocimiento.
+                            </span>
+                        </p>
+                        <p class="font-semibold md:text-left text-center">
+                            Lcdo. Hector Parra
+                            <br />
+                            <span class="font-extralight">
+                                Director de Produccion.
+                            </span>
+                        </p>
+                        <p class="font-semibold md:text-left text-center">
+                            Dra. Lila Martinez
+                            <br />
+                            <span class="font-extralight">
+                                Directora de Control y Seguimiento.
+                            </span>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div
@@ -95,62 +101,9 @@ const year = new Date().getFullYear();
                 <p class="text-sm mt-4">
                     © {{ year }} Trabajo de investigación - UNERG
                 </p>
-                <span class="inline-flex mt-4 justify-center sm:justify-start">
-                    <a class="ml-3" href="#" rel="noopener noreferrer">
-                        <svg
-                            fill="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            class="w-5 h-5"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
-                            ></path>
-                        </svg>
-                    </a>
-                    <a class="ml-3" href="#" rel="noopener noreferrer">
-                        <svg
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            class="w-5 h-5"
-                            viewBox="0 0 24 24"
-                        >
-                            <rect
-                                width="20"
-                                height="20"
-                                x="2"
-                                y="2"
-                                rx="5"
-                                ry="5"
-                            ></rect>
-                            <path
-                                d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
-                            ></path>
-                        </svg>
-                    </a>
-                    <a class="ml-3" href="#" rel="noopener noreferrer">
-                        <svg
-                            fill="currentColor"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="0"
-                            class="w-5 h-5"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke="none"
-                                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
-                            ></path>
-                            <circle cx="4" cy="4" r="2" stroke="none"></circle>
-                        </svg>
-                    </a>
-                </span>
+                <SocialMedia
+                    class="inline-flex mt-4 justify-center sm:justify-start"
+                />
             </div>
         </div>
     </footer>

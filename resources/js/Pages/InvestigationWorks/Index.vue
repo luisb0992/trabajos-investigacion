@@ -34,7 +34,7 @@ const {
                             :href="route('investigation-works.create')"
                         >
                             <span class="pi pi-plus"></span>
-                            Nuevo Trabajo
+                            Nuevo Producto
                         </LinkDefault>
                     </template>
 
