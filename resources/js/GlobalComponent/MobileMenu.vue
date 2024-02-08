@@ -10,7 +10,7 @@ import { user } from "@/Util/auth";
                 :href="route('dashboard')"
                 :active="route().current('dashboard')"
             >
-                Dashboard
+                Inicio
             </ResponsiveNavLink>
             <ResponsiveNavLink
                 :href="route('users.index')"
