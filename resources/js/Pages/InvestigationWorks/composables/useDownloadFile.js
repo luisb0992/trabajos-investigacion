@@ -29,8 +29,28 @@ export default function useDownloadFile() {
         pdf.save();
     };
 
+    const showActivities = (act) => {
+        const activity = JSON.parse(act);
+        const data = [];
+
+        activity?.one
+            ? data.push("<span>SI</span>")
+            : data.push("<span>NO</span>");
+        activity?.two
+            ? data.push("<span>SI</span>")
+            : data.push("<span>NO</span>");
+        activity?.three
+            ? data.push("<span>SI</span>")
+            : data.push("<span>NO</span>");
+        activity?.four
+            ? data.push("<span>SI</span>")
+            : data.push("<span>NO</span>");
+        return data.join(" - ");
+    };
+
     return {
         downloadFile,
+        showActivities,
         ...toRefs({
             work,
         }),

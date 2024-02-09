@@ -10,9 +10,11 @@ import {
     projectStatus,
     projectTypes,
     items,
+    quarters,
+    activities,
 } from "@/Util/const";
 
-const { work, downloadFile } = useDownloadFile();
+const { work, downloadFile, showActivities } = useDownloadFile();
 </script>
 <template>
     <Head title="Descargar archivo" />
@@ -94,7 +96,7 @@ const { work, downloadFile } = useDownloadFile();
                             <td class="px-2 pb-4">
                                 {{
                                     projectTypes.find((t) => t.id === work.type)
-                                        .name ?? "---"
+                                        ?.name ?? "---"
                                 }}
                             </td>
                         </tr>
@@ -106,7 +108,7 @@ const { work, downloadFile } = useDownloadFile();
                                 {{
                                     projectStatus.find(
                                         (s) => s.id === work.status
-                                    ).name ?? "---"
+                                    )?.name ?? "---"
                                 }}
                             </td>
                         </tr>
@@ -390,6 +392,73 @@ const { work, downloadFile } = useDownloadFile();
                                     work.homeland_plan
                                         ?.relationship_objectives ?? "---"
                                 }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="activities" class="mt-3">
+                <table class="w-full border">
+                    <caption
+                        class="uppercase font-bold border bg-gray-300 pb-3 text-sm"
+                    >
+                        Cronograma de actividades
+                    </caption>
+                    <thead class="text-sm text-nowrap">
+                        <tr>
+                            <th class="pb-3">#</th>
+                            <th class="pb-3">Actividad</th>
+                            <th class="pb-3">
+                                <div class="flex flex-col">
+                                    <p class="mb-2">Meses del año</p>
+                                    <div class="flex justify-start gap-8">
+                                        <p
+                                            class="uppercase text-xs font-semibold"
+                                        >
+                                            {{ quarters.one }}
+                                        </p>
+                                        <p
+                                            class="uppercase text-xs font-semibold"
+                                        >
+                                            {{ quarters.two }}
+                                        </p>
+                                        <p
+                                            class="uppercase text-xs font-semibold"
+                                        >
+                                            {{ quarters.three }}
+                                        </p>
+                                        <p
+                                            class="uppercase text-xs font-semibold"
+                                        >
+                                            {{ quarters.four }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            class="bg-white border-b border-gray-300"
+                            v-for="act in activities"
+                            :key="act.id"
+                        >
+                            <td class="px-2 pb-4">
+                                {{ act.id }}
+                            </td>
+                            <td class="px-2 pb-4">
+                                {{ act.activity }}
+                            </td>
+                            <td class="px-2 pb-4">
+                                <div
+                                    class="flex gap-5 justify-start"
+                                    v-html="
+                                        showActivities(
+                                            work.schedule_activity[act.value]
+                                        )
+                                    "
+                                ></div>
                             </td>
                         </tr>
                     </tbody>
