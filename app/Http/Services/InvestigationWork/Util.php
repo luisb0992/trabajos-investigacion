@@ -40,6 +40,17 @@ final class Util
     ];
   }
 
+  public function baseActivities(): array
+  {
+    return [
+      1 => 'revision',
+      2 => 'description',
+      3 => 'analysis',
+      4 => 'drafting',
+      5 => 'conclusions',
+    ];
+  }
+
   public function filterAspects(array $aspects): array
   {
     // los aspectos base
@@ -71,6 +82,24 @@ final class Util
       return $baseItems[$key];
     }, $filterItemKeys), array_map(function ($key) use ($filter) {
       return $filter[$key];
+    }, $filterItemKeys));
+  }
+
+  public function filterActivities(array $activities): array
+  {
+    // los items base
+    $baseActivities = $this->baseActivities();
+    // filtrar los items
+    $filter = array_filter($activities, fn ($i) => $i);
+    // obtener las key
+    $itemKeys = array_keys($filter);
+    // intersect las key
+    $filterItemKeys = array_intersect($itemKeys, array_keys($baseActivities));
+    // combinar ambos arrays con sus claves
+    return array_combine(array_map(function ($key) use ($baseActivities) {
+      return $baseActivities[$key];
+    }, $filterItemKeys), array_map(function ($key) use ($filter) {
+      return json_encode($filter[$key]);
     }, $filterItemKeys));
   }
 

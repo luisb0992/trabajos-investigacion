@@ -34,7 +34,8 @@ trait InvestigationWorkTrait
         'authors',
         'homelandPlan',
         'ethicalAspect',
-        'itemService'
+        'itemService',
+        'scheduleActivity'
       ]);
   }
 

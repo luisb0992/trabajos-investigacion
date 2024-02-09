@@ -25,6 +25,7 @@ const {
     searchType,
     addAuthor,
     removeAuthor,
+    assignActivity,
 } = useCreateInvestigationWork();
 
 const { categories, selectCategory } = useWorkCategory();
@@ -84,6 +85,7 @@ const { categories, selectCategory } = useWorkCategory();
             :search-type="searchType"
             :add-author="addAuthor"
             :remove-author="removeAuthor"
+            :assign-activity="assignActivity"
             @submit.prevent="create"
             v-if="selectCategory?.id === categories[1].id"
             class="animate-swing-in-top-fwd"
@@ -103,6 +105,7 @@ const { categories, selectCategory } = useWorkCategory();
             :search-type="searchType"
             :add-author="addAuthor"
             :remove-author="removeAuthor"
+            :assign-activity="assignActivity"
             @submit.prevent="create"
             v-if="selectCategory?.id === categories[2].id"
             class="animate-swing-in-top-fwd"
@@ -122,6 +125,7 @@ const { categories, selectCategory } = useWorkCategory();
             :search-type="searchType"
             :add-author="addAuthor"
             :remove-author="removeAuthor"
+            :assign-activity="assignActivity"
             @submit.prevent="create"
             v-if="selectCategory?.id === categories[3].id"
             class="animate-swing-in-top-fwd"

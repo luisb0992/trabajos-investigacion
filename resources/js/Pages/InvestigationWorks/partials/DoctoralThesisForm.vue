@@ -9,6 +9,7 @@ import Checkbox from "primevue/checkbox";
 import InputNumber from "primevue/inputnumber";
 
 import { aspects, items } from "@/Util/const.js";
+import SectionActivities from "./scheduleActivities/SectionActivities.vue";
 
 const props = defineProps({
     title: {
@@ -60,6 +61,10 @@ const props = defineProps({
         required: true,
     },
     removeAuthor: {
+        type: Function,
+        required: true,
+    },
+    assignActivity: {
         type: Function,
         required: true,
     },
@@ -455,6 +460,8 @@ const props = defineProps({
                 </small>
             </div>
         </section>
+
+        <SectionActivities :assign-activity="assignActivity" />
 
         <section id="ethics">
             <h3 class="text-xl font-semibold">Aspectos éticos</h3>

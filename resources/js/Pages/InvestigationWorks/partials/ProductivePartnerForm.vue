@@ -9,6 +9,7 @@ import Checkbox from "primevue/checkbox";
 import InputNumber from "primevue/inputnumber";
 
 import { aspects, items } from "@/Util/const.js";
+import SectionActivities from "./scheduleActivities/SectionActivities.vue";
 
 const props = defineProps({
     title: {
@@ -60,6 +61,10 @@ const props = defineProps({
         required: true,
     },
     removeAuthor: {
+        type: Function,
+        required: true,
+    },
+    assignActivity: {
         type: Function,
         required: true,
     },
@@ -298,32 +303,44 @@ const props = defineProps({
                     :key="index"
                     class="flex flex-col md:flex-row justify-start gap-3 animate-fade-in-down"
                 >
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText v-model="author.dni" id="cedula" />
                         <!-- <label for="cedula">Cédula</label> -->
                         <small id="cedula-help"> Cédula del autor. </small>
                     </span>
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText v-model="author.name" id="name" />
                         <!-- <label for="name">Nombre</label> -->
                         <small id="name-help"> Nombre del autor. </small>
                     </span>
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText v-model="author.lastname" id="lastname" />
                         <!-- <label for="lastname">Apellido</label> -->
                         <small id="lastname-help"> Apellido del autor. </small>
                     </span>
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText v-model="author.email" id="lastname" />
                         <!-- <label for="email">Correo</label> -->
                         <small id="email-help"> Email del autor. </small>
                     </span>
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText v-model="author.phone" id="lastname" />
                         <!-- <label for="phone">Teléfono</label> -->
                         <small id="phone-help"> Teléfono del autor. </small>
                     </span>
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText
                             v-model="author.level_instruction"
                             id="lastname"
@@ -333,7 +350,9 @@ const props = defineProps({
                             Nivel de instrucción del autor.
                         </small>
                     </span>
-                    <span class="p-float-label flex flex-col gap-2 w-full md:w-36">
+                    <span
+                        class="p-float-label flex flex-col gap-2 w-full md:w-36"
+                    >
                         <InputText v-model="author.address" id="lastname" />
                         <!-- <label for="address">Dirección</label> -->
                         <small id="address-help"> Dirección del autor. </small>
@@ -455,6 +474,8 @@ const props = defineProps({
                 </small>
             </div>
         </section>
+
+        <SectionActivities :assign-activity="assignActivity" />
 
         <section id="ethics">
             <h3 class="text-xl font-semibold">Aspectos éticos</h3>

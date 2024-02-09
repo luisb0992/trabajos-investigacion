@@ -1,9 +1,9 @@
 <script setup>
 import { Head } from "@inertiajs/vue3";
+import { categories } from "@/Util/const";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import useUpdateInvestigationWork from "./composables/useUpdateInvestigationWork";
 import WorkForm from "./partials/WorkForm.vue";
-import { categories } from "@/Util/const";
 import DegreeWorkForm from "./partials/DegreeWorkForm.vue";
 import DoctoralThesisForm from "./partials/DoctoralThesisForm.vue";
 import ProductivePartnerForm from "./partials/ProductivePartnerForm.vue";
@@ -24,6 +24,7 @@ const {
     searchType,
     addAuthor,
     removeAuthor,
+    assignActivity,
 } = useUpdateInvestigationWork();
 </script>
 
@@ -61,6 +62,7 @@ const {
             :search-type="searchType"
             :add-author="addAuthor"
             :remove-author="removeAuthor"
+            :assign-activity="assignActivity"
             @submit.prevent="update"
             v-if="form.category_id === categories[1].id"
             class="animate-swing-in-top-fwd"
@@ -81,6 +83,7 @@ const {
             :search-type="searchType"
             :add-author="addAuthor"
             :remove-author="removeAuthor"
+            :assign-activity="assignActivity"
             @submit.prevent="update"
             v-if="form.category_id === categories[2].id"
             class="animate-swing-in-top-fwd"
@@ -101,6 +104,7 @@ const {
             :search-type="searchType"
             :add-author="addAuthor"
             :remove-author="removeAuthor"
+            :assign-activity="assignActivity"
             @submit.prevent="update"
             v-if="form.category_id === categories[3].id"
             class="animate-swing-in-top-fwd"

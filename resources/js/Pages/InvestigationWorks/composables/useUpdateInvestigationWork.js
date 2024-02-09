@@ -11,7 +11,14 @@ import useFilters from "./useFilters.js";
 import useAuthors from "./useAuthors.js";
 import useValidations from "./useValidations.js";
 import { success, validateFields, workUpdated } from "@/Util/messages.js";
-import { aspects, items, projectStatus, projectTypes } from "@/Util/const.js";
+import {
+    aspects,
+    items,
+    projectStatus,
+    projectTypes,
+    activities,
+    quarters,
+} from "@/Util/const.js";
 
 export default function useUpdateInvestigationWork() {
     const loading = ref(false);
@@ -71,6 +78,7 @@ export default function useUpdateInvestigationWork() {
         authors: authors.value,
         aspects: [],
         items: [],
+        activities: [],
     });
 
     onMounted(() => {
@@ -181,12 +189,37 @@ export default function useUpdateInvestigationWork() {
             });
         }
 
+        // actividades
+        const sche_act = item.value.schedule_activity;
+        if (sche_act) {
+            const filterAct = [
+                JSON.parse(sche_act.revision),
+                JSON.parse(sche_act.description),
+                JSON.parse(sche_act.analysis),
+                JSON.parse(sche_act.drafting),
+                JSON.parse(sche_act.conclusions),
+            ];
+            // agregar un indice en primero lugar
+            filterAct.unshift("");
+            // agregar al array del formulario
+            form.activities = filterAct;
+            // agregar a los checkbox
+            filterAct.map((act, i) => {
+                activities.value.map((ac) => {
+                    if (ac.id === i) {
+                        ac.select_1 = act?.one ? true : false;
+                        ac.select_2 = act?.two ? true : false;
+                        ac.select_3 = act?.three ? true : false;
+                        ac.select_4 = act?.four ? true : false;
+                    }
+                });
+            });
+        }
+
         authors.value = form.authors;
     };
 
     const update = () => {
-        // console.log(form.aspects);
-        // console.log(form.items);
         const { validate } = useValidations(form);
         if (validate().hasErrors) {
             const errors = validate().msjs.join("<br>");
@@ -203,6 +236,59 @@ export default function useUpdateInvestigationWork() {
             onError: (errors) => validateRequest(errors),
             onFinish: () => (loading.value = false),
         });
+    };
+
+    const assignActivity = (quarter, id, checked) => {
+        let key = "one";
+
+        if (quarter == quarters.value.one) {
+            key = "one";
+        } else if (quarter == quarters.value.two) {
+            key = "two";
+        } else if (quarter == quarters.value.three) {
+            key = "three";
+        } else if (quarter == quarters.value.four) {
+            key = "four";
+        }
+
+        // remover
+        if (!checked) {
+            const activity = form.activities[id];
+
+            if (activity) {
+                const hasQuarter = activity[key] ? true : false;
+
+                if (hasQuarter) {
+                    // eliminar del array
+                    delete activity[key];
+                }
+
+                const hasActivity = Object.keys(activity).length > 0;
+
+                if (!hasActivity) {
+                    delete form.activities[id];
+                }
+            }
+        }
+
+        // agregar
+        if (checked) {
+            const activity = form.activities[id];
+
+            if (!activity) {
+                const act = (form.activities[id] = {});
+                act[key] = quarter;
+                return false;
+            }
+
+            if (activity) {
+                const hasQuarter = activity[key] ? true : false;
+
+                if (!hasQuarter) {
+                    activity[key] = quarter;
+                }
+            }
+        }
     };
 
     return {
@@ -223,5 +309,6 @@ export default function useUpdateInvestigationWork() {
         removeAuthor,
         searchStatus,
         searchType,
+        assignActivity,
     };
 }

@@ -54,6 +54,7 @@ class CreateInvestigationWorkRequest extends FormRequest
                 'relationship_objectives' => 'nullable|max:2000',
                 'aspects' => 'nullable|array',
                 'items' => 'nullable|array',
+                'activities' => 'nullable|array',
             ];
         }
 
@@ -90,6 +91,7 @@ class CreateInvestigationWorkRequest extends FormRequest
                 'relationship_objectives' => 'nullable|max:2000',
                 'aspects' => 'nullable|array',
                 'items' => 'nullable|array',
+                'activities' => 'nullable|array',
             ];
         }
     }

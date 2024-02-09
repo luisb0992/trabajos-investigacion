@@ -25,7 +25,7 @@ export default function useValidations(form) {
     });
 
     const allDNIAuthorsIsMax = computed(() => {
-        return form.authors.every((a) => a.dni.length <= 8);
+        return form.authors.every((a) => a.dni?.length <= 8);
     });
 
     const allNameIAuthorsIsMax = computed(() => {

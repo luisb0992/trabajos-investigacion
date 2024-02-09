@@ -8,6 +8,7 @@ use Illuminate\Http\UploadedFile;
 use Exception;
 use Illuminate\Http\Request;
 use App\Http\Services\InvestigationWork\Util;
+use Illuminate\Support\Facades\DB;
 
 class Factory
 {
@@ -48,21 +49,28 @@ class Factory
       $categoryID === WorkCategoryEnum::PRODUCTIVE_PARTNER
     ) {
 
-      $degree = $this->util->onlyDataDegreeAndDoctoralAndProductive($data);
-      $homeland = $this->util->onlyDataHomeland($data);
-      $aspects = $this->util->filterAspects($data->aspects);
-      $items = $this->util->filterItems($data->items);
+      $investigationWork = DB::transaction(function () use ($data, $authors, $investigationWork) {
+        $degree = $this->util->onlyDataDegreeAndDoctoralAndProductive($data);
+        $homeland = $this->util->onlyDataHomeland($data);
+        $aspects = $this->util->filterAspects($data->aspects);
+        $items = $this->util->filterItems($data->items);
+        $activities = $this->util->filterActivities($data->activities);
 
-      // crear el proyecto
-      $investigationWork = $this->model->create($degree);
-      // guardar los autores
-      $this->saveAuthors($authors, $investigationWork);
-      // guardar plan de la patria
-      $investigationWork->homelandPlan()->create($homeland);
-      // guardar aspectos éticos
-      $investigationWork->ethicalAspect()->create($aspects);
-      // guardar rubros
-      $investigationWork->itemService()->create($items);
+        // crear el proyecto
+        $investigationWork = $this->model->create($degree);
+        // guardar los autores
+        $this->saveAuthors($authors, $investigationWork);
+        // guardar plan de la patria
+        $investigationWork->homelandPlan()->create($homeland);
+        // guardar aspectos éticos
+        $investigationWork->ethicalAspect()->create($aspects);
+        // guardar rubros
+        $investigationWork->itemService()->create($items);
+        // guardar cronograma de actividades
+        $investigationWork->scheduleActivity()->create($activities);
+
+        return $investigationWork;
+      });
     }
 
     // cat articulo científico
@@ -160,6 +168,7 @@ class Factory
       $homeland = $this->util->onlyDataHomeland($data);
       $aspects = $this->util->filterAspects($data->aspects);
       $items = $this->util->filterItems($data->items);
+      $activities = $this->util->filterActivities($data->activities);
 
       // guardar plan de la patria
       $work->homelandPlan()->delete();
@@ -170,6 +179,9 @@ class Factory
       // guardar rubros
       $work->itemService()->delete();
       $work->itemService()->create($items);
+      // guardar actividades
+      $work->scheduleActivity()->delete();
+      $work->scheduleActivity()->create($activities);
     }
 
     // cat articulo científico

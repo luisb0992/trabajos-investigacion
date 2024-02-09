@@ -66,4 +66,9 @@ class InvestigationWork extends Model
     {
         return $this->hasOne(ItemService::class);
     }
+
+    public function scheduleActivity(): HasOne
+    {
+        return $this->hasOne(ScheduleActivity::class);
+    }
 }

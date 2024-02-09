@@ -82,6 +82,7 @@ export default function useCreateInvestigationWork() {
             const errors = validate().msjs.join("<br>");
             return alertError(validateFields, errors);
         }
+        console.log(form);
 
         loading.value = true;
         form.post(route("investigation-works.store"), {
@@ -122,6 +123,12 @@ export default function useCreateInvestigationWork() {
                     // eliminar del array
                     delete activity[key];
                 }
+
+                const hasActivity = Object.keys(activity).length > 0;
+
+                if (!hasActivity) {
+                    delete form.activities[id];
+                }
             }
         }
 
@@ -132,7 +139,6 @@ export default function useCreateInvestigationWork() {
             if (!activity) {
                 const act = (form.activities[id] = {});
                 act[key] = quarter;
-                console.log(form.activities);
                 return false;
             }
 
@@ -144,8 +150,6 @@ export default function useCreateInvestigationWork() {
                 }
             }
         }
-
-        console.log(form.activities);
     };
 
     return {
